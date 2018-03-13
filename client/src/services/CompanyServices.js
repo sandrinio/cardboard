@@ -3,7 +3,7 @@ import Api from './Api'
 
 export default {
   newProduct (product) {
-    return Api().post(':id/newProduct', product)
+    return Api().post(`${product.id}/new-product`, product)
   },
   newCompany (company){
     return Api().post('newCompany', company)

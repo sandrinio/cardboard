@@ -35,8 +35,9 @@ router.post('/deleteCompany', (req, res) => {
 })
 
 router.post('/:id/new-product', (req, res) => {
-		console.log(req.body)
-		res.send(req.body)
+		Product.create(req.body, function (err, result) {
+				console.log(result)
+		})
 })
 
 module.exports = router

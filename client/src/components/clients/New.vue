@@ -182,7 +182,10 @@ import CompanyServices from '@/services/CompanyServices'
     methods: {
       confirm (e) {
         e.preventDefault()
-        CompanyServices.newProduct(this.product)
+        const newProduct = this.product
+        newProduct.id = this.$route.params.id
+
+        CompanyServices.newProduct(newProduct)
           .then((response) => {
             console.log(response.data)
           })
