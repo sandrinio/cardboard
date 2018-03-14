@@ -5,7 +5,7 @@ import Login from '@/components/auth/Login'
 import Register from '@/components/auth/Register'
 import Clients from '@/components/clients/Clients'
 import NewProduct from '@/components/clients/New'
-import ProductShow from '@/components/clients/show'
+import ProductShow from '@/components/clients/Show'
 
 Vue.use(Router)
 
