@@ -6,13 +6,16 @@ const dateFormat = require('dateformat');
 const now = new Date();
 
 router.get('/companyGetter', (req, res) => {
-		Company.find({}, function (err, result) {
+		Company.find({}).populate('products').exec(function (err, result) {
 				if(err) return res.send({error: err})
 				res.status(200).send(result)
 		})
 })
-router.get('/getCompany', (req, res) => {
-		console.log(req.body)
+router.get('/getCompany/:id', (req, res) => {
+		Product.findById(req.params.id, function (err, product) {
+				if(err) return res.send({error: err})
+				res.status(200).send(product)
+		})
 })
 
 
@@ -35,9 +38,18 @@ router.post('/deleteCompany', (req, res) => {
 })
 
 router.post('/:id/new-product', (req, res) => {
-		Product.create(req.body, function (err, result) {
-				console.log(result)
+		Company.findById(req.body.id, function (err, company) {
+				if(err) return console.log(err)
+
+				Product.create(req.body, function (err, product) {
+						if(err) return console.log(err)
+						company.products.push(product)
+						company.save()
+						console.log(company)
+						res.status(200).send({msg: 'Saved'})
+				})
 		})
+
 })
 
 module.exports = router

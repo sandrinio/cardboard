@@ -5,6 +5,7 @@ import Login from '@/components/auth/Login'
 import Register from '@/components/auth/Register'
 import Clients from '@/components/clients/Clients'
 import NewCompany from '@/components/clients/New'
+import ProductShow from '@/components/clients/show'
 
 Vue.use(Router)
 
@@ -29,6 +30,12 @@ export default new Router({
       path: '/clients',
       name: 'clients',
       component: Clients
+    },
+    {
+      path: '/clients/product-show/:id',
+      name: 'productShow',
+      props: true,
+      component: ProductShow
     },
     {
       path: '/clients/:id/new-product',

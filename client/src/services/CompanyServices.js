@@ -15,6 +15,6 @@ export default {
     return Api().post('deleteCompany', company)
   },
   getCompany (id) {
-    return Api().get('/getCompany', id)
+    return Api().get(`/getCompany/${id}`)
   }
 }
