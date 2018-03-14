@@ -182,20 +182,20 @@ export default {
   methods: {
     confirm (e) {
       e.preventDefault()
-      const newProduct = this.product
-      newProduct.id = this.$route.params.id
+      const modifiedProduct = this.product
+      modifiedProduct.id = this.$route.params.id
 
-//      CompanyServices.newProduct(newProduct)
-//        .then((response) => {
-//          console.log(response.data)
-//        })
-//        .catch((err)=> {
-//          console.log(err.data)
-//        })
+      CompanyServices.changeProduct(this.product, this.$route.params.id)
+        .then((response) => {
+          this.$router.push({name: 'clients'})
+        })
+        .catch((err)=> {
+          console.log(err.data)
+        })
     }
   },
   mounted () {
-    CompanyServices.getCompany(this.$route.params.id)
+    CompanyServices.getProduct(this.$route.params.id)
       .then((res) => {
         this.product = res.data
       })

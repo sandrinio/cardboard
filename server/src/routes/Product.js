@@ -5,16 +5,24 @@ const Product = require('../models/Product')
 const dateFormat = require('dateformat');
 const now = new Date();
 
-router.get('/companyGetter', (req, res) => {
+router.get('/getCompanyList', (req, res) => {
 		Company.find({}).populate('products').exec(function (err, result) {
 				if(err) return res.send({error: err})
 				res.status(200).send(result)
 		})
 })
-router.get('/getCompany/:id', (req, res) => {
+router.get('/getProduct/:id', (req, res) => {
 		Product.findById(req.params.id, function (err, product) {
 				if(err) return res.send({error: err})
 				res.status(200).send(product)
+		})
+})
+
+router.get('/getCompany/:id', (req, res) => {
+		console.log(req.params.id)
+		Company.findById(req.params.id, function (err, company) {
+				if(err) return res.send({error: err})
+				res.status(200).send(company)
 		})
 })
 
@@ -37,6 +45,13 @@ router.post('/deleteCompany', (req, res) => {
 		})
 })
 
+router.post('/changeProduct/:id', (req, res) => {
+		Product.findByIdAndUpdate(req.params.id, req.body, function (err, product) {
+				if(err) return res.send({error: err})
+				res.status(200).send(product)
+		})
+})
+
 router.post('/:id/new-product', (req, res) => {
 		Company.findById(req.body.id, function (err, company) {
 				if(err) return console.log(err)
@@ -45,7 +60,6 @@ router.post('/:id/new-product', (req, res) => {
 						if(err) return console.log(err)
 						company.products.push(product)
 						company.save()
-						console.log(company)
 						res.status(200).send({msg: 'Saved'})
 				})
 		})

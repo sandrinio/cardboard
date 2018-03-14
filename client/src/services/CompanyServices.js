@@ -8,13 +8,22 @@ export default {
   newCompany (company){
     return Api().post('newCompany', company)
   },
-  companyGetter (){
-    return Api().get('companyGetter')
+  getCompanyList (){
+    return Api().get('getCompanyList')
   },
   deleteCompany (company) {
     return Api().post('deleteCompany', company)
   },
+  getProduct (id) {
+    return Api().get(`getProduct/${id}`)
+  },
   getCompany (id) {
-    return Api().get(`/getCompany/${id}`)
+    return Api().get(`getCompany/${id}`)
+  },
+  changeProduct (data, id) {
+    return Api().post(`changeProduct/${id}`, data)
   }
+  // changeProduct (data, id) {
+  //   return Api().post(`changeProduct/id`, data)
+  // }
 }

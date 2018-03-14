@@ -3,7 +3,7 @@
     <v-flex xs8 offset-xs2>
       <div class="white elevation-2">
         <v-toolbar flat dense class="blue darken-3" dark>
-          <v-toolbar-title>{{company.company}}</v-toolbar-title>
+          <v-toolbar-title>კომპანია: {{company}} - ახალი პროდუქტი</v-toolbar-title>
         </v-toolbar>
         <form class="pl-4 pr-4 pt-2 pb-2">
             <v-flex xs4>
@@ -35,7 +35,7 @@
               <v-select
                 :items="materials"
                 v-model="product.layer1"
-                label="Select"
+                label="შრე"
                 single-line
               ></v-select>
             </v-flex>
@@ -44,7 +44,7 @@
                 class="ml-2"
                 :items="materials"
                 v-model="product.layer2"
-                label="Select"
+                label="შრე"
                 single-line
               ></v-select>
             </v-flex>
@@ -53,7 +53,7 @@
                 class="ml-2"
                 :items="materials"
                 v-model="product.layer3"
-                label="Select"
+                label="შრე"
                 single-line
               ></v-select>
             </v-flex>
@@ -64,7 +64,7 @@
                 class="ml-2"
                 :items="materials"
                 v-model="product.layer4"
-                label="Select"
+                label="შრე"
                 single-line
               ></v-select>
             </v-flex>
@@ -73,7 +73,7 @@
                 class="ml-2"
                 :items="materials"
                 v-model="product.layer5"
-                label="Select"
+                label="შრე"
                 single-line
               ></v-select>
             </v-flex>
@@ -81,6 +81,11 @@
           <v-layout class="mt-4">
             <v-flex sm4>
               <h3>ყუთი</h3>
+              <v-text-field
+                label="ყუთის სიგრძე"
+                type="number"
+                v-model="product.boxThickness"
+              ></v-text-field>
               <v-text-field
                 label="ყუთის სიმაღლე"
                 type="number"
@@ -91,14 +96,14 @@
                 type="number"
                 v-model="product.boxWidth"
               ></v-text-field>
-              <v-text-field
-                label="ყუთის სისქე"
-                type="number"
-                v-model="product.boxThickness"
-              ></v-text-field>
             </v-flex>
             <v-flex sm4 class="ml-5">
               <h3>მამალი</h3>
+              <v-text-field
+                label="ტიხარის სიგრძე"
+                type="number"
+                v-model="product.mDividerThickness"
+              ></v-text-field>
               <v-text-field
                 label="ტიხარის სიმაღლე"
                 type="number"
@@ -109,33 +114,29 @@
                 type="number"
                 v-model="product.mDividerWidth"
               ></v-text-field>
-              <v-text-field
-                label="ტიხარის სისქე"
-                type="number"
-                v-model="product.mDividerThickness"
-              ></v-text-field>
             </v-flex>
             <v-flex sm4 class="ml-5">
               <h3>დედალი</h3>
+              <v-text-field
+                label="ტიხარის სიგრძე"
+                type="number"
+                v-model="product.fDividerThickness"
+              ></v-text-field>
               <v-text-field
                 label="ტიხარის სიმაღლე"
                 type="number"
                 v-model="product.fDividerHeight"
               ></v-text-field>
               <v-text-field
-                label="ტიხარის სისქე"
+                label="ტიხარის სიგანე"
                 type="number"
                 v-model="product.fDividerWidth"
               ></v-text-field>
-              <v-text-field
-                label="ტიხარის სიგანე"
-                type="number"
-                v-model="product.fDividerThickness"
-              ></v-text-field>
+
             </v-flex>
           </v-layout>
-
-          <v-btn class="primary" dark @click="confirm">Create</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn class="primary" dark @click="confirm">დამატება</v-btn>
         </form>
       </div>
     </v-flex>
@@ -187,7 +188,7 @@ import CompanyServices from '@/services/CompanyServices'
 
         CompanyServices.newProduct(newProduct)
           .then((response) => {
-            console.log(response.data)
+            this.$router.push({name: 'clients'})
           })
           .catch((err)=> {
             console.log(err.data)
@@ -195,9 +196,10 @@ import CompanyServices from '@/services/CompanyServices'
       }
     },
     mounted () {
-      CompanyServices.getCompany(this.$route.params)
+      CompanyServices.getCompany(this.$route.params.id)
         .then((res) => {
           this.company = res.data.company
+          console.log(this.company)
         })
         .catch((err) => {
           console.log(err)

@@ -1,10 +1,10 @@
 <template>
   <v-container fluid>
-    <v-layout row wrap>
+    <v-layout>
       <v-flex md7 xs12>
         <div class="white elevation-2">
           <v-toolbar flat dense class="blue darken-3" dark>
-            <v-toolbar-title>Companies</v-toolbar-title>
+            <v-toolbar-title>კომპანიები</v-toolbar-title>
           </v-toolbar>
           <v-card>
             <v-card-title>
@@ -67,28 +67,9 @@
         </v-card>
       </v-dialog>
 
-      <!--<v-dialog v-model="companyProductListDialog" max-width="500px">-->
-        <!--<v-card>-->
-          <!--<v-card-title>-->
-            <!--{{temporary.company}}-ს პროდუქტები-->
-          <!--</v-card-title>-->
-          <!--<v-card-text class="pl-4 pr-4 pt-2 pb-2">-->
-            <!--<div class="products-list">-->
-              <!--<ul v-for="product in temporary.products">-->
-                <!--<li><a @click="navigateTo({name: 'productShow', params: {id: product._id}})">{{product.productName}}</a></li>-->
-              <!--</ul>-->
-            <!--</div>-->
-          <!--</v-card-text>-->
-          <!--<v-spacer></v-spacer>-->
-          <!--<v-card-actions>-->
-            <!--<v-btn color="primary" flat @click.stop="companyProductListDialog=false">Close</v-btn>-->
-            <!--<v-spacer></v-spacer>-->
-            <!--<v-btn color="primary" @click="navigateTo({name: 'newCompany', params: {id: temporary._id}})" flat >New Product</v-btn>-->
-          <!--</v-card-actions>-->
-
-        <!--</v-card>-->
-      <!--</v-dialog>-->
-      <products-component v-if="!companyProductListDialog"></products-component>
+      <v-flex md5 xs12 class="ml-3">
+        <products-component v-if="companyProductListDialog === true" :temporary="temporary"></products-component>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -142,23 +123,20 @@ import ProductsComponent from '@/components/clients/ProductsComponent'
           })
       },
       detailsDialog (item) {
-        this.temporary = item
-        if(this.companyProductListDialog = true){
+        if(this.companyProductListDialog === true){
           return this.companyProductListDialog = false
         }else{
+          this.temporary = item
           return this.companyProductListDialog = true
         }
 
       },
       navigateTo (route){
         this.$router.push(route)
-      },
-      navigateProduct (id){
-        console.log(id)
       }
     },
     mounted () {
-      CompanyServices.companyGetter()
+      CompanyServices.getCompanyList()
         .then((response) => {
           this.items = response.data
         })

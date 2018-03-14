@@ -8,7 +8,7 @@ const AuthRoutes     = require('./routes/Auth.js')
 			ProductRoutes  = require('./routes/Product.js')
 
 const app = express()
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 

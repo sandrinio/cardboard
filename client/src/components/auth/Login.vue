@@ -21,9 +21,10 @@
               v-model="password"
             ></v-text-field>
             <div class="danger-alert" v-html="error" />
+            <v-spacer></v-spacer>
             <v-btn
               dark
-              class="blue darken-4"
+              class="primary"
               @click="login">
               Login
             </v-btn>

@@ -4,7 +4,7 @@ import Dashboard from '@/components/Dashboard'
 import Login from '@/components/auth/Login'
 import Register from '@/components/auth/Register'
 import Clients from '@/components/clients/Clients'
-import NewCompany from '@/components/clients/New'
+import NewProduct from '@/components/clients/New'
 import ProductShow from '@/components/clients/show'
 
 Vue.use(Router)
@@ -39,9 +39,9 @@ export default new Router({
     },
     {
       path: '/clients/:id/new-product',
-      name: 'newCompany',
+      name: 'newProduct',
       props: true,
-      component: NewCompany
+      component: NewProduct
     }
   ]
 })

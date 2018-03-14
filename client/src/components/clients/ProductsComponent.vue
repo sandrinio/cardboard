@@ -1,25 +1,41 @@
 <template>
   <!--<v-layout class="ml-3">-->
-    <v-flex md4 xs12 class="ml-3">
       <div class="white elevation-2">
         <v-toolbar flat dense class="blue darken-3" dark>
-          <v-toolbar-title>Products</v-toolbar-title>
+          <v-toolbar-title>{{temporary.company}} პროდუქტები</v-toolbar-title>
         </v-toolbar>
         <v-card>
-          <v-card-title>
             <v-spacer></v-spacer>
-          </v-card-title>
+          <v-data-table
+            :items="temporary.products"
+            hide-actions
+            class="elevation-0"
+            hide-headers
+          >
+            <template slot="items" slot-scope="props">
+              <td @click="navigateTo(`/clients/product-show/${props.item._id}`)">{{ props.item.productName }}</td>
+            </template>
+          </v-data-table>
         </v-card>
+
+        <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="primary" @click="navigateTo({name: 'newProduct', params: {id: temporary._id}})" flat >New Product</v-btn>
+        </v-card-actions>
       </div>
-    </v-flex>
   <!--</v-layout>-->
 </template>
 
 <script>
   export default {
+    props: ['temporary'],
     data () {
       return {
-
+      }
+    },
+    methods: {
+      navigateTo (route){
+        this.$router.push(route)
       }
     }
   }
