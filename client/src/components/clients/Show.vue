@@ -1,6 +1,7 @@
  <template>
     <v-layout>
       <v-flex xs8 offset-xs2>
+        <v-progress-linear v-if="indeterminate" :indeterminate="indeterminate"></v-progress-linear>
         <div class="white elevation-2">
           <v-toolbar flat dense class="blue darken-3" dark>
             <v-toolbar-title></v-toolbar-title>
@@ -176,7 +177,8 @@ export default {
         fDividerHeight: '',
         fDividerWidth: '',
         fDividerThickness: ''
-      }
+      },
+      indeterminate: true
     }
   },
   methods: {
@@ -197,7 +199,12 @@ export default {
   mounted () {
     CompanyServices.getProduct(this.$route.params.id)
       .then((res) => {
+        this.indeterminate = false
         this.product = res.data
+      })
+      .catch((error)=> {
+        this.indeterminate = false
+        console.log(error)
       })
   }
 }

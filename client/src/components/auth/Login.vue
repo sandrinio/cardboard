@@ -1,9 +1,8 @@
 <template>
-  <v-layout column>
+  <v-layout row>
     <v-flex xs6 offset-xs3>
-
   <div class="white elevation-2">
-    <v-toolbar flat dense class="blue darken-4" dark>
+    <v-toolbar flat dense class="blue darken-3" dark>
       <v-toolbar-title>Login</v-toolbar-title>
     </v-toolbar>
 
@@ -24,6 +23,7 @@
             <v-spacer></v-spacer>
             <v-btn
               dark
+              :loading="loading"
               class="primary"
               @click="login">
               Login
@@ -42,11 +42,13 @@ import AuthService from '@/services/AuthServices'
       return {
         email: '',
         password: '',
-        error: ''
+        error: '',
+        loading: false
       }
     },
     methods: {
       login () {
+        this.loading = true
         const credentials = {
           email: this.email,
           password: this.password
@@ -54,8 +56,10 @@ import AuthService from '@/services/AuthServices'
         AuthService.login(credentials)
           .then((response) => {
             if(response.data.error){
+              this.loading = false
               this.error = response.data.error
             }else{
+              this.loading = false
               this.$store.dispatch('setToken', response.data.token)
               this.$store.dispatch('setUser', response.data.user)
               this.$router.push({

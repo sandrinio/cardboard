@@ -153,7 +153,7 @@ import CompanyServices from '@/services/CompanyServices'
            '3', '5'
             ],
           materials: [
-            'მუყაო', 'წყალგამძლე', 'თეთრი'
+            'Tesline', 'Fluting', 'White-tesline'
           ],
           profileCat: [
             'B', 'E', 'C'

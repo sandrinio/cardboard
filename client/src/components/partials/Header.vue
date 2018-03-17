@@ -4,6 +4,7 @@
     <v-toolbar-title class="homeLink" @click="navigate('dashboard')">Cardboard</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
+      <v-btn flat @click="navigate('orders')">Orders</v-btn>
       <v-btn flat @click="navigate('clients')">Clients</v-btn>
       <v-btn v-if="!this.$store.state.isUserLoggedIn" flat @click="navigate('login')">Login</v-btn>
       <v-btn v-else flat @click="logout">Logout</v-btn>

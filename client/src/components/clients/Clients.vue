@@ -1,5 +1,4 @@
 <template>
-  <v-container fluid>
     <v-layout>
       <v-flex md7 xs12>
         <div class="white elevation-2">
@@ -19,10 +18,12 @@
               ></v-text-field>
             </v-card-title>
             <v-data-table
+              :loading="loading"
               :headers="headers"
               :items="items"
               :search="search"
             >
+              <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
               <template slot="items" slot-scope="props">
                 <td>{{props.item.regDate.slice(0,8)}}</td>
                 <td class="text-xs-left" @click="detailsDialog(props.item)">{{props.item.company}}</td>
@@ -71,7 +72,6 @@
         <products-component v-if="companyProductListDialog === true" :temporary="temporary"></products-component>
       </v-flex>
     </v-layout>
-  </v-container>
 </template>
 
 <script>
@@ -87,6 +87,7 @@ import ProductsComponent from '@/components/clients/ProductsComponent'
         companyName: '',
         temporary: {},
         search: '',
+        loading: true,
         headers: [
           {
             align: 'left',
@@ -139,6 +140,7 @@ import ProductsComponent from '@/components/clients/ProductsComponent'
       CompanyServices.getCompanyList()
         .then((response) => {
           this.items = response.data
+          this.loading = false
         })
         .catch((err) => {
           console.log(err.data)

@@ -1,9 +1,8 @@
 <template>
-  <v-layout column>
+  <v-layout row>
     <v-flex xs6 offset-xs3>
-
       <div class="white elevation-2">
-        <v-toolbar flat dense class="blue darken-4" dark>
+        <v-toolbar flat dense class="blue darken-3" dark>
           <v-toolbar-title>Register</v-toolbar-title>
         </v-toolbar>
         <div class="pl-4 pr-4 pt-2 pb-2">
@@ -49,7 +48,8 @@
             <br>
             <v-btn
               dark
-              class="blue darken-4"
+              :loading="loading"
+              class="blue darken-3"
               :keyup.13="register"
               @click="register">
               Register
@@ -77,11 +77,13 @@ import AuthService from '@/services/AuthServices'
         surname: '',
         password: '',
         password2: '',
-        permission: ''
+        permission: '',
+        loading: false
       }
     },
     methods: {
       register () {
+        this.loading = true
         const user = {
           permission: this.permission,
           email: this.email,
@@ -100,6 +102,7 @@ import AuthService from '@/services/AuthServices'
         }
         AuthService.register(user)
           .then((response) => {
+            this.loading = false
             this.$store.dispatch('setToken', response.data.token)
             this.$store.dispatch('setUser', response.data.user)
             this.$router.push({name: 'dashboard'})

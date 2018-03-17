@@ -13,7 +13,8 @@
             hide-headers
           >
             <template slot="items" slot-scope="props">
-              <td @click="navigateTo(`/clients/product-show/${props.item._id}`)">{{ props.item.productName }}</td>
+              <td @click="navigateTo(`/clients/product-show/${props.item._id}`)">
+                {{ props.item.productName }}</td>
             </template>
           </v-data-table>
         </v-card>
