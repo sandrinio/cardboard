@@ -1,7 +1,7 @@
 <template>
   <v-toolbar fixed dark class="blue darken-4" v-if="this.$route.path !== '/login'">
     <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title>Cardboard</v-toolbar-title>
+    <v-toolbar-title class="homeLink" @click="navigate('dashboard')">Cardboard</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn flat @click="navigate('clients')">Clients</v-btn>
@@ -19,8 +19,7 @@
       return {
         routes: [
           'Companies',
-          'Orders',
-          ''
+          'Orders'
         ]
       }
     },
@@ -41,5 +40,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.homeLink:hover {
+  cursor: pointer;
+}
 </style>

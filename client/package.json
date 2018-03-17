@@ -1,7 +1,7 @@
 {
-  "name": "client",
+  "name": "test-app",
   "version": "1.0.0",
-  "description": "cardboard",
+  "description": "A Vue.js project",
   "author": "sandrinio <sandro.suladze@gmail.com>",
   "private": true,
   "scripts": {
@@ -14,9 +14,9 @@
     "lodash": "^4.17.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuetify": "^1.0.6",
+    "vuetify": "^1.0.8",
     "vuex": "^3.0.1",
-    "vuex-persistedstate": "^2.4.2",
+    "vuex-persistedstate": "^2.5.1",
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
