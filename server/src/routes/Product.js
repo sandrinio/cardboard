@@ -5,9 +5,6 @@ const Product = require('../models/Product')
 const dateFormat = require('dateformat');
 const now = new Date();
 
-router.get('/test', (req, res)=>{
-		res.send({msg: 'Test Complete'})
-})
 
 router.get('/getCompanyList', (req, res) => {
 		Company.find({}).populate('products').exec(function (err, result) {
