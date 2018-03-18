@@ -17,7 +17,8 @@ const ProductSchema = new mongoose.Schema({
 		mDividerThickness: String,
 		fDividerHeight: String,
 		fDividerWidth: String,
-		fDividerThickness: String
+		fDividerThickness: String,
+		dividersPerBox: String
 })
 
 

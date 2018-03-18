@@ -26,7 +26,7 @@
               <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
               <template slot="items" slot-scope="props">
                 <td>{{props.item.regDate.slice(0,8)}}</td>
-                <td class="text-xs-left" @click="detailsDialog(props.item)">{{props.item.company}}</td>
+                <td class="text-xs-left pointer" @click="detailsDialog(props.item)">{{props.item.company}}</td>
                 <td class="text-xs-left">{{props.item.products.length}}</td>
                 <td class="text-xs-left">{{props.item.orders}}</td>
                 <td class="justify-center layout px-0">
@@ -187,6 +187,10 @@ import ProductsComponent from '@/components/clients/ProductsComponent'
   .products-list li a:hover {
     font-size: 20px;
     background: #f6f6f6;
+  }
+
+  .pointer:hover {
+    cursor: pointer;
   }
 
 </style>

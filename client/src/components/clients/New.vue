@@ -132,7 +132,11 @@
                 type="number"
                 v-model="product.fDividerWidth"
               ></v-text-field>
-
+              <v-text-field
+                label="ტიხარი თითო ყუთში"
+                type="number"
+                v-model="product.dividersPerBox"
+              ></v-text-field>
             </v-flex>
           </v-layout>
           <v-spacer></v-spacer>
@@ -176,7 +180,8 @@ import CompanyServices from '@/services/CompanyServices'
             mDividerThickness: '',
             fDividerHeight: '',
             fDividerWidth: '',
-            fDividerThickness: ''
+            fDividerThickness: '',
+            dividersPerBox: ''
           }
         }
       },
