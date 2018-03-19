@@ -56,7 +56,7 @@ router.post('/changeProduct/:id', (req, res) => {
 router.post('/:id/new-product', (req, res) => {
 		Company.findById(req.body.id, function (err, company) {
 				if(err) return console.log(err)
-
+				console.log(req.body)
 				Product.create(req.body, function (err, product) {
 						if(err) return console.log(err)
 						company.products.push(product)

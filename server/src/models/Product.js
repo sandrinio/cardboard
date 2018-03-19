@@ -3,11 +3,7 @@ const mongoose = require("mongoose");
 const ProductSchema = new mongoose.Schema({
 		productName: String,
 		layerQuantity: String,
-		layer1: String,
-		layer2: String,
-		layer3: String,
-		layer4: String,
-		layer5: String,
+		layers: [],
 		profile: String,
 		boxHeight: String,
 		boxWidth: String,

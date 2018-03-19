@@ -35,7 +35,7 @@
               <v-flex sm4>
                 <v-select
                   :items="materials"
-                  v-model="product.layer1"
+                  v-model="product.layers[0]"
                   label="Select"
                   single-line
                 ></v-select>
@@ -44,7 +44,7 @@
                 <v-select
                   class="ml-2"
                   :items="materials"
-                  v-model="product.layer2"
+                  v-model="product.layers[1]"
                   label="Select"
                   single-line
                 ></v-select>
@@ -53,7 +53,7 @@
                 <v-select
                   class="ml-2"
                   :items="materials"
-                  v-model="product.layer3"
+                  v-model="product.layers[2]"
                   label="Select"
                   single-line
                 ></v-select>
@@ -64,7 +64,7 @@
                 <v-select
                   class="ml-2"
                   :items="materials"
-                  v-model="product.layer4"
+                  v-model="product.layers[3]"
                   label="Select"
                   single-line
                 ></v-select>
@@ -73,7 +73,7 @@
                 <v-select
                   class="ml-2"
                   :items="materials"
-                  v-model="product.layer5"
+                  v-model="product.layers[4]"
                   label="Select"
                   single-line
                 ></v-select>
@@ -153,7 +153,7 @@ export default {
         '3', '5'
       ],
       materials: [
-        'მუყაო', 'წყალგამძლე', 'თეთრი'
+        'Tesline', 'Fluting', 'White-tesline'
       ],
       profileCat: [
         'B', 'E', 'C'
@@ -162,11 +162,7 @@ export default {
       product:{
         productName: '',
         layerQuantity: '',
-        layer1: '',
-        layer2: '',
-        layer3: '',
-        layer4: '',
-        layer5: '',
+        layers: [],
         profile: '',
         boxHeight: '',
         boxWidth: '',

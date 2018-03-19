@@ -31,29 +31,23 @@
             </v-flex>
           </v-layout>
           <v-layout row v-if="this.product.layerQuantity === '3' || this.product.layerQuantity === '5'">
-            <v-flex sm4>
+            <v-flex sm3>
               <v-select
                 :items="materials"
-                v-model="product.layer1"
-                label="შრე"
+                v-model="layer1"
+                label="შრე #1"
                 single-line
               ></v-select>
-            </v-flex>
-            <v-flex sm4>
               <v-select
-                class="ml-2"
                 :items="materials"
-                v-model="product.layer2"
-                label="შრე"
+                v-model="layer2"
+                label="შრე #2"
                 single-line
               ></v-select>
-            </v-flex>
-            <v-flex sm4>
               <v-select
-                class="ml-2"
                 :items="materials"
-                v-model="product.layer3"
-                label="შრე"
+                v-model="layer3"
+                label="შრე #3"
                 single-line
               ></v-select>
             </v-flex>
@@ -61,19 +55,15 @@
           <v-layout row v-if="this.product.layerQuantity === '5'">
             <v-flex sm3>
               <v-select
-                class="ml-2"
                 :items="materials"
-                v-model="product.layer4"
-                label="შრე"
+                v-model="layer4"
+                label="შრე #4"
                 single-line
               ></v-select>
-            </v-flex>
-            <v-flex sm3>
               <v-select
-                class="ml-2"
                 :items="materials"
-                v-model="product.layer5"
-                label="შრე"
+                v-model="layer5"
+                label="შრე #5"
                 single-line
               ></v-select>
             </v-flex>
@@ -154,7 +144,7 @@ import CompanyServices from '@/services/CompanyServices'
     data () {
       return {
           items: [
-           '3', '5'
+           "3", "5"
             ],
           materials: [
             'Tesline', 'Fluting', 'White-tesline'
@@ -163,14 +153,15 @@ import CompanyServices from '@/services/CompanyServices'
             'B', 'E', 'C'
           ],
           company: '',
+          layer1: '',
+          layer2: '',
+          layer3: '',
+          layer4: '',
+          layer5: '',
           product:{
             productName: '',
             layerQuantity: '',
-            layer1: '',
-            layer2: '',
-            layer3: '',
-            layer4: '',
-            layer5: '',
+            layers: [],
             profile: '',
             boxHeight: '',
             boxWidth: '',
@@ -191,6 +182,21 @@ import CompanyServices from '@/services/CompanyServices'
         const newProduct = this.product
         newProduct.id = this.$route.params.id
 
+        if(this.product.layerQuantity === '3'){
+          this.product.layers = []
+          this.product.layers.push(this.layer1)
+          this.product.layers.push(this.layer2)
+          this.product.layers.push(this.layer3)
+        }else {
+          this.product.layers = []
+          this.product.layers.push(this.layer1)
+          this.product.layers.push(this.layer2)
+          this.product.layers.push(this.layer3)
+          this.product.layers.push(this.layer4)
+          this.product.layers.push(this.layer5)
+        }
+
+        console.log(newProduct)
         CompanyServices.newProduct(newProduct)
           .then((response) => {
             this.$router.push({name: 'clients'})
