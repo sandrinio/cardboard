@@ -1,6 +1,6 @@
 <template>
-    <v-layout>
-      <v-flex md7 xs12>
+    <v-layout row fluid>
+      <v-flex md7 sm12>
         <div class="white elevation-2">
           <v-toolbar flat dense class="blue darken-3" dark>
             <v-toolbar-title>კომპანიები</v-toolbar-title>
@@ -68,7 +68,7 @@
         </v-card>
       </v-dialog>
 
-      <v-flex md5 xs12 class="ml-3">
+      <v-flex md5 sm12 class="ml-3">
         <products-component v-if="companyProductListDialog === true" :temporary="temporary"></products-component>
       </v-flex>
     </v-layout>

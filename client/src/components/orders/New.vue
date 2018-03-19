@@ -31,27 +31,23 @@
                     autocomplete
                   ></v-select>
                 </v-flex>
-                <v-flex xs4 v-if="showDetails">
-                  <ul>
-                    <li>
-                      ყუთი: {{selectedProductDetails.boxHeight}}x{{selectedProductDetails.boxWidth}}x{{selectedProductDetails.boxThickness}}
-                    </li>
-                    <li>
-                      დედალი ტიხარი: {{selectedProductDetails.fDividerHeight}}x{{selectedProductDetails.fDividerWidth}}x{{selectedProductDetails.fDividerThickness}}
-                    </li>
-                    <li>
-                      მამალი ტიხარი: {{selectedProductDetails.mDividerHeight}}x{{selectedProductDetails.mDividerWidth}}x{{selectedProductDetails.mDividerThickness}}
-                    </li>
-                    <li>
-                      ტიხარის რაოდენობა თითო ყუთში: {{selectedProductDetails.dividersPerBox}}
-                    </li>
-                    <li>
-                      შრე: {{}}
-                    </li>
-                    <li>
-                      პროფილი: {{selectedProductDetails.profile}}
-                    </li>
-                  </ul>
+                <v-flex xs12 v-if="showDetails">
+                  <table id="productInfoTable">
+                    <tr>
+                      <th>შრე - {{selectedProductDetails.layerQuantity}}</th>
+                      <th>პროფილი</th>
+                      <th>მამალი ტიხარი</th>
+                      <th>დედალი ტიხარი</th>
+                      <th>ყუთი</th>
+                    </tr>
+                    <tr>
+                      <td><span v-for="(layer) in selectedProductDetails.layers">{{layer}}<br></span></td>
+                      <td>{{selectedProductDetails.profile}}</td>
+                      <td>{{selectedProductDetails.mDividerHeight}}x{{selectedProductDetails.mDividerWidth}}x{{selectedProductDetails.mDividerThickness}}</td>
+                      <td>{{selectedProductDetails.fDividerHeight}}x{{selectedProductDetails.fDividerWidth}}x{{selectedProductDetails.fDividerThickness}}</td>
+                      <td>{{selectedProductDetails.boxHeight}}x{{selectedProductDetails.boxWidth}}x{{selectedProductDetails.boxThickness}}</td>
+                    </tr>
+                  </table>
                 </v-flex>
               </v-layout>
             </v-card-title>
@@ -123,5 +119,27 @@ import CompanyServices from '@/services/CompanyServices'
 </script>
 
 <style scoped>
+  #productInfoTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+  }
 
+  #productInfoTable td, #productInfoTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #productInfoTable tr:nth-child(even){background-color: #f2f2f2;}
+
+  /*#productInfoTable tr:hover {background-color: #ddd;}*/
+
+  #productInfoTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
 </style>
