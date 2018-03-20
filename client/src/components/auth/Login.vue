@@ -7,17 +7,20 @@
     </v-toolbar>
 
     <div class="pl-4 pr-4 pt-2 pb-2">
+      <v-form>
           <div title="Login">
             <br>
             <v-text-field
               label="Email"
               v-model="email"
+              @keyup.enter="login"
             ></v-text-field>
             <br>
             <v-text-field
               label="Password"
               type="password"
               v-model="password"
+              @keyup.enter="login"
             ></v-text-field>
             <div class="danger-alert" v-html="error" />
             <v-spacer></v-spacer>
@@ -29,6 +32,7 @@
               Login
             </v-btn>
           </div>
+      </v-form>
     </div>
   </div>
     </v-flex>
@@ -70,6 +74,9 @@ import AuthService from '@/services/AuthServices'
           .catch((err) => {
             console.log(err.data)
           })
+      },
+      testing () {
+        alert('done')
       }
     }
   }

@@ -21,6 +21,7 @@
             <v-text-field
               prepend-icon="account-box"
               label="surname"
+              @keyup.enter="register"
               v-model="surname"
             ></v-text-field>
             <v-select
@@ -30,6 +31,7 @@
               single-line
               auto
               prepend-icon="star"
+              @keyup.enter="register"
               hide-details
             ></v-select>
             <br>
@@ -37,11 +39,13 @@
               label="Password"
               type="password"
               v-model="password"
+              @keyup.enter="register"
             ></v-text-field>
             <v-text-field
               label="Re-type Password"
               type="password"
               v-model="password2"
+              @keyup.enter="register"
             ></v-text-field>
             <br>
             <div class="danger-alert" v-html="error" />

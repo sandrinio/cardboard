@@ -10,6 +10,7 @@
               <v-text-field
                 label="Product Name"
                 v-model="product.productName"
+                @keyup.enter="confirm"
               ></v-text-field>
             </v-flex>
           <v-layout>
@@ -19,6 +20,7 @@
                 v-model="product.profile"
                 label="პროფილი"
                 single-line
+                @keyup.enter="confirm"
               ></v-select>
             </v-flex>
             <v-flex xs4 class="ml-4">
@@ -27,6 +29,7 @@
                 v-model="product.layerQuantity"
                 label="შრეების რაოდენობა"
                 single-line
+                @keyup.enter="confirm"
               ></v-select>
             </v-flex>
           </v-layout>
@@ -49,6 +52,7 @@
                 v-model="layer3"
                 label="შრე #3"
                 single-line
+                @keyup.enter="confirm"
               ></v-select>
             </v-flex>
           </v-layout>
@@ -59,12 +63,14 @@
                 v-model="layer4"
                 label="შრე #4"
                 single-line
+                @keyup.enter="confirm"
               ></v-select>
               <v-select
                 :items="materials"
                 v-model="layer5"
                 label="შრე #5"
                 single-line
+                @keyup.enter="confirm"
               ></v-select>
             </v-flex>
           </v-layout>
@@ -75,16 +81,19 @@
                 label="ყუთის სიგრძე"
                 type="number"
                 v-model="product.boxThickness"
+                @keyup.enter="confirm"
               ></v-text-field>
               <v-text-field
                 label="ყუთის სიმაღლე"
                 type="number"
                 v-model="product.boxHeight"
+                @keyup.enter="confirm"
               ></v-text-field>
               <v-text-field
                 label="ყუთის სიგანე"
                 type="number"
                 v-model="product.boxWidth"
+                @keyup.enter="confirm"
               ></v-text-field>
             </v-flex>
             <v-flex sm4 class="ml-5">
@@ -103,6 +112,7 @@
                 label="ტიხარის სიგანე"
                 type="number"
                 v-model="product.mDividerWidth"
+                @keyup.enter="confirm"
               ></v-text-field>
             </v-flex>
             <v-flex sm4 class="ml-5">
@@ -111,21 +121,25 @@
                 label="ტიხარის სიგრძე"
                 type="number"
                 v-model="product.fDividerThickness"
+                @keyup.enter="confirm"
               ></v-text-field>
               <v-text-field
                 label="ტიხარის სიმაღლე"
                 type="number"
                 v-model="product.fDividerHeight"
+                @keyup.enter="confirm"
               ></v-text-field>
               <v-text-field
                 label="ტიხარის სიგანე"
                 type="number"
                 v-model="product.fDividerWidth"
+                @keyup.enter="confirm"
               ></v-text-field>
               <v-text-field
                 label="ტიხარი თითო ყუთში"
                 type="number"
                 v-model="product.dividersPerBox"
+                @keyup.enter="confirm"
               ></v-text-field>
             </v-flex>
           </v-layout>

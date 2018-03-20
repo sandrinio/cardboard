@@ -182,6 +182,17 @@ export default {
       e.preventDefault()
       const modifiedProduct = this.product
       modifiedProduct.id = this.$route.params.id
+      // if(this.product.layerQuantity === '3'){
+      //   console.log('3')
+      // }else{
+      //   console.log('5')
+      // }
+      let layersBucket = []
+      for(let i = 0; i < this.product.layerQuantity; ++i){
+        layersBucket.push(this.product.layers[i])
+      }
+      this.product.layers = []
+      this.product.layers = layersBucket
 
       CompanyServices.changeProduct(this.product, this.$route.params.id)
         .then((response) => {

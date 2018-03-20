@@ -13,12 +13,13 @@ import NewOrder from '@/components/orders/New'
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'dashboard',
-      component: Dashboard
+      component: Dashboard,
+      beforeEnter: Auth_Guard
     },
     {
       path: '/login',

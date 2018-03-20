@@ -50,7 +50,48 @@
                   </table>
                 </v-flex>
               </v-layout>
+              <v-layout>
+                <v-flex xs4>
+                  <v-text-field
+                    label="Box Quantity"
+                    type="number"
+                    v-model="order.boxQuantity"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Divider Quantity"
+                    type="number"
+                    v-model="order.dividerQuantity"
+                  ></v-text-field>
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <h4>Deadline</h4>
+                  <v-date-picker
+                    full-width
+                    landscape
+                    class="mt-3"
+                    v-model="order.deadline"
+                  ></v-date-picker>
+                </v-flex>
+              </v-layout>
+              <v-layout row class="mt-4">
+                <v-flex xs12>
+                  <v-text-field
+                    name="input-7-1"
+                    label="Comment"
+                    multi-line
+                  ></v-text-field>
+                </v-flex>
+              </v-layout>
             </v-card-title>
+            <v-btn
+              dark
+              :btnLoading="btnLoading"
+              class="primary"
+              @click="newOrder">
+              Confirm
+            </v-btn>
           </v-form>
         </v-card>
       </div>
@@ -60,6 +101,7 @@
 
 <script>
 import CompanyServices from '@/services/CompanyServices'
+import OrderServices from '@/services/OrderServices'
 
 		export default {
       data () {
@@ -71,6 +113,7 @@ import CompanyServices from '@/services/CompanyServices'
           selectedProductDetails: {},
           showDetails: false,
           loading: true,
+          btnLoading: false,
           search: '',
           order: {
             company: '',
@@ -80,6 +123,18 @@ import CompanyServices from '@/services/CompanyServices'
             deadline: '',
             comment: ''
           }
+        }
+      },
+      methods: {
+        newOrder () {
+          this.btnLoading = true
+          OrderServices.newOrder(this.order)
+            .then((res) => {
+              console.log(res.data.msg)
+            })
+            .catch((err) => {
+              console.log(err.data)
+            })
         }
       },
       mounted () {
@@ -139,7 +194,7 @@ import CompanyServices from '@/services/CompanyServices'
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color: #327135;
     color: white;
   }
 </style>

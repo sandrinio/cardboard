@@ -55,6 +55,7 @@
             <v-text-field
               label="კომპანიის სახელი (ლათინური ასოებით)"
               v-model="companyName"
+              @keyup.enter="saveCompany"
             ></v-text-field>
             </form>
           </v-card-text>

@@ -47,9 +47,10 @@ router.post('/deleteCompany', (req, res) => {
 })
 
 router.post('/changeProduct/:id', (req, res) => {
+		console.log(req.body)
 		Product.findByIdAndUpdate(req.params.id, req.body, function (err, product) {
 				if(err) return res.send({error: err})
-				res.status(200).send(product)
+				res.status(200).send({msg: 'success'})
 		})
 })
 
