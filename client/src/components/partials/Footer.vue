@@ -1,8 +1,7 @@
 <template>
-  <!--<v-footer class="pa-3 grey darken-3" tile flat>-->
-    <!--<v-spacer></v-spacer>-->
-    <!--<div>&copy; {{ new Date().getFullYear() }}</div>-->
-  <!--</v-footer>-->
+ <v-footer color="indigo" app>
+      <span class="white--text">&copy; 2018</span>
+    </v-footer>
 </template>
 
 <script>

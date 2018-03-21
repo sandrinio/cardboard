@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <v-app>
-      <page-header/>
-
-      <main>
-        <v-container fluid>
-          <router-view></router-view>
-        </v-container>
-      </main>
-      <page-footer />
+    <v-app id="inspire">
+      <v-content>
+        <page-header/>
+        <main>
+          <v-container fluid fill-height>
+            <router-view></router-view>
+          </v-container>
+        </main>
+        <page-footer />
+      </v-content>
     </v-app>
   </div>
 </template>
