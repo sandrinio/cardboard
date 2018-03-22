@@ -150,7 +150,8 @@ import OrderServices from '@/services/OrderServices'
 
           OrderServices.newOrder(this.order)
             .then((res) => {
-              console.log(res.data.msg)
+              this.btnLoading = false
+              this.$router.push({name: 'orders'})
             })
             .catch((err) => {
               console.log(err.data)
