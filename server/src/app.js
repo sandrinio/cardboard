@@ -17,7 +17,7 @@ const app = express({
 
 app.use(history())
 app.use(serveStatic(__dirname + "/dist"));
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 

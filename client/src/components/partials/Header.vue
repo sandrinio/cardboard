@@ -1,16 +1,4 @@
 <template>
-  <!-- <v-toolbar fixed dark class="blue darken-4" v-if="this.$route.path !== '/login'">
-    <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title class="homeLink" @click="navigate('dashboard')">Cardboard</v-toolbar-title>
-    <v-spacer></v-spacer>
-    <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat @click="navigate('orders')">Orders</v-btn>
-      <v-btn flat @click="navigate('clients')">Clients</v-btn>
-      <v-btn v-if="!this.$store.state.isUserLoggedIn" flat @click="navigate('login')">Login</v-btn>
-      <v-btn v-else flat @click="logout">Logout</v-btn>
-      <v-btn flat @click="navigate('register')" v-if="$store.state.user.permission === 'Admin'">Register</v-btn>
-    </v-toolbar-items>
-  </v-toolbar> -->
   <div v-if="this.$route.path !== '/login'">
     <v-navigation-drawer
         fixed
@@ -46,7 +34,7 @@
         </v-list>
       </v-navigation-drawer>
       
-      <v-toolbar color="indigo" dark fixed app>
+      <v-toolbar color="indigo" dark fixed app :clipped-left="$vuetify.breakpoint.lgAndUp">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title>Cardboard</v-toolbar-title>
         <v-spacer></v-spacer>
@@ -55,8 +43,7 @@
         <v-btn v-if="!this.$store.state.isUserLoggedIn" flat @click="navigate('login')">Login</v-btn>
         <v-btn v-else flat @click="logout">Logout</v-btn>
         <v-btn flat @click="navigate('register')" v-if="$store.state.user.permission === 'Admin'">Register</v-btn>
-
-    </v-toolbar-items>
+        </v-toolbar-items>
       </v-toolbar>
     </div>
 </template>
@@ -69,7 +56,7 @@
           'Companies',  
           'Orders'
         ],
-        drawer: null
+        drawer: false
       }
     },
     methods: {

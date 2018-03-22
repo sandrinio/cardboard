@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex md6 xs12 offset-md3>
+    <v-flex md10 xs12 offset-md1>
       <div class="white elevation-2">
         <v-toolbar flat dense class="blue darken-3" dark>
           <v-toolbar-title>ახალი შეკვეთა</v-toolbar-title>
@@ -81,6 +81,7 @@
                     name="input-7-1"
                     label="Comment"
                     multi-line
+                    v-model="order.comment"
                   ></v-text-field>
                 </v-flex>
               </v-layout>
@@ -128,6 +129,25 @@ import OrderServices from '@/services/OrderServices'
       methods: {
         newOrder () {
           this.btnLoading = true
+          const newOrder = {
+            company: this.order.company,
+            product: this.order.product.productName,
+            boxQuantity: this.order.boxQuantity,
+            dividerQuantity: this.order.dividerQuantity,
+            boxHeight: this.order.product.boxHeight,
+            boxWidth: this.order.product.boxWidth,
+            boxThickness: this.order.product.boxThickness,
+            mDividerHeight: this.order.product.mDividerHeight,
+            mDividerWidth: this.order.product.mDividerWidth,
+            mDividerThickness: this.order.product.mDividerThickness,
+            fDividerHeight: this.order.product.fDividerHeight,
+            fDividerWidth: this.order.product.fDividerWidth,
+            fDividerThickness: this.order.product.fDividerThickness,
+            deadline: this.order.deadline,
+            comment: this.order.comment
+          }
+          console.log(newOrder)
+
           OrderServices.newOrder(this.order)
             .then((res) => {
               console.log(res.data.msg)
@@ -166,7 +186,6 @@ import OrderServices from '@/services/OrderServices'
         },
         'order.product': function (selectedProduct) {
           this.showDetails = true
-          console.log(selectedProduct)
           this.selectedProductDetails = selectedProduct
         }
       }

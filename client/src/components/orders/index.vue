@@ -1,9 +1,9 @@
 <template>
     <v-layout>
-      <v-flex md8 xs12 offset-md2>
+      <v-flex md10 xs12 offset-md1>
         <div class="white elevation-2">
           <v-toolbar flat dense class="blue darken-3" dark>
-            <v-toolbar-title>კომპანიები</v-toolbar-title>
+            <v-toolbar-title>შეკვეთები</v-toolbar-title>
           </v-toolbar>
           <v-card>
             <v-card-title>
@@ -25,15 +25,17 @@
             <v-data-table
               :loading="loading"
               :headers="headers"
-              :items="items"
+              :items="orders"
               :search="search"
             >
               <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
               <template slot="items" slot-scope="props">
-                <td>{{props.item.regDate.slice(0,8)}}</td>
+                <td>{{props.item.deadline.slice(0,8)}}</td>
+                <td class="text-xs-left">{{props.item.status}}</td>
                 <td class="text-xs-left">{{props.item.company}}</td>
-                <td class="text-xs-left">{{props.item.products.length}}</td>
-                <td class="text-xs-left">{{props.item.orders}}</td>
+                <td class="text-xs-left"><span><strong>{{props.item.product}}</strong></span> - {{props.item.boxHeight}}x{{props.item.boxWidth}}x{{props.item.boxThickness}}</td>
+                <td class="text-xs-left">{{props.item.boxQuantity}}</td>
+                <td class="text-xs-left">{{props.item.dividerQuantity}}</td>
                 <td class="justify-center layout px-0">
                   <v-btn icon class="mx-0" @click="deleteItem(props.item)">
                     <v-icon color="pink">delete</v-icon>
@@ -55,24 +57,26 @@
 </template>
 
 <script>
-  import CompanyServices from '@/services/CompanyServices'
+  import OrderService from '@/services/OrderServices'
 
 export default {
   data (){
     return {
-      items: [],
+      orders: [],
       loading: true,
       search: '',
       headers: [
         {
+          text: 'Deadline',
           align: 'left',
           sortable: false,
           value: 'name'
         },
-        { text: 'Company Name', value: 'company' },
-        { text: 'Product', value: 'product' },
-        { text: 'Total Orders', value: 'total orders' },
-        { text: 'Actions', value: 'Actions' }
+        { text: 'სტატუსი', value: 'status' },
+        { text: 'კომპანია', value: 'company' },
+        { text: 'პროდუქტი', value: 'product' },
+        { text: 'ყუთის შეკვეთა', value: 'boxQuantity' },
+        { text: 'ტიხარის შეკვეთა', value: 'dividerQuantity' }
       ],
     }
   },
@@ -85,10 +89,11 @@ export default {
     }
   },
   mounted () {
-    CompanyServices.getCompanyList()
+    OrderService.ordersGetter()
       .then((response) => {
-        this.items = response.data
+        this.orders = response.data.orders
         this.loading = false
+      
       })
       .catch((err) => {
         console.log(err.data)
