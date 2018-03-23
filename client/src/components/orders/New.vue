@@ -118,6 +118,7 @@ import OrderServices from '@/services/OrderServices'
           search: '',
           order: {
             company: '',
+            companyId: '',
             product: '',
             boxQuantity: '',
             dividerQuantity: '',
@@ -128,7 +129,6 @@ import OrderServices from '@/services/OrderServices'
       },
       methods: {
         newOrder () {
-          this.btnLoading = true
           const newOrder = {
             company: this.order.company,
             product: this.order.product.productName,

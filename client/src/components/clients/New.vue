@@ -5,7 +5,7 @@
         <v-toolbar flat dense class="blue darken-3" dark>
           <v-toolbar-title>კომპანია: {{company}} - ახალი პროდუქტი</v-toolbar-title>
         </v-toolbar>
-        <form class="pl-4 pr-4 pt-2 pb-2">
+        <v-form class="pl-4 pr-4 pt-2 pb-2">
             <v-flex xs4>
               <v-text-field
                 label="Product Name"
@@ -145,7 +145,7 @@
           </v-layout>
           <v-spacer></v-spacer>
           <v-btn class="primary" dark @click="confirm">დამატება</v-btn>
-        </form>
+        </v-form>
       </div>
     </v-flex>
   </v-layout>

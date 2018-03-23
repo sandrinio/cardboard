@@ -14,7 +14,7 @@
           >
             <template slot="items" slot-scope="props">
               <td @click="navigateTo(`/clients/product-show/${props.item._id}`)">
-                {{ props.item.productName }} - {{props.item.boxHeight}}x{{props.item.boxWidth}}x{{props.item.boxThickness}}</td>
+                <strong>{{ props.item.productName }}</strong> - {{props.item.boxHeight}}x{{props.item.boxWidth}}x{{props.item.boxThickness}}</td>
             </template>
           </v-data-table>
         </v-card>

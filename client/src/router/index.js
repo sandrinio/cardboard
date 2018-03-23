@@ -9,6 +9,8 @@ import NewProduct from '@/components/clients/New'
 import ProductShow from '@/components/clients/Show'
 import Orders from '@/components/orders/index'
 import NewOrder from '@/components/orders/New'
+import Warehouse from '@/components/warehouse/index'
+import Supplies from '@/components/supplies/index'
 
 Vue.use(Router)
 
@@ -62,6 +64,18 @@ export default new Router({
       path: '/orders/new',
       name: 'newOrder',
       component: NewOrder,
+      beforeEnter: Auth_Guard
+    },
+    {
+      path: '/warehouse',
+      name: 'warehouse',
+      component: Warehouse,
+      beforeEnter: Auth_Guard
+    },
+    {
+      path: '/supplies',
+      name: 'supplies',
+      component: Supplies,
       beforeEnter: Auth_Guard
     }
   ]

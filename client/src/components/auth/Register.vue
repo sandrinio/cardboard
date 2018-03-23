@@ -31,7 +31,6 @@
               single-line
               auto
               prepend-icon="star"
-              @keyup.enter="register"
               hide-details
             ></v-select>
             <br>
@@ -99,9 +98,11 @@ import AuthService from '@/services/AuthServices'
           .keys(user)
           .every(key => !!user[key])
         if(this.password !== this.password2){
+          this.loading = false
           return this.error = 'პაროლი არ ემთხვევა'
         }
         if(!allFieldsFilled){
+          this.loading = false
           return this.error = 'შეავსე ყველა ველი'
         }
         AuthService.register(user)
@@ -112,6 +113,7 @@ import AuthService from '@/services/AuthServices'
             this.$router.push({name: 'dashboard'})
           })
           .catch((err) => {
+            this.loading = false
             console.log(err.data)
           })
       }

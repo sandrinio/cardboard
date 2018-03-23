@@ -9,7 +9,7 @@ const now = new Date();
 
 router.post('/new-order', (req, res) => {
 		const newOrder = {
-			company: req.body.company,
+						company: req.body.company,
             product: req.body.product.productName,
             boxQuantity: req.body.boxQuantity,
             dividerQuantity: req.body.dividerQuantity,
@@ -27,6 +27,19 @@ router.post('/new-order', (req, res) => {
 			regDate: dateFormat(now, 'd-mmmm-yyyy hh:mm:ss'),
 			status: 'In-Progress'
 		}
+		Company.findOne({'company': newOrder.company}, function (err, result) {
+				if(err) return res.send({error: err})
+				if(!result.hasOwnProperty('orders') && isNaN(result.orders)){
+						console.log('reached')
+						result.orders = '1'
+						result.save()
+						console.log(result)
+				}else{
+					result.orders = +result.orders +1
+						result.save()
+						console.log(result)
+				}
+		})
 		Order.create(newOrder, function(err, result){
 			if(err) return res.send({error: err})
 			res.send({msg: 'Order Created'})

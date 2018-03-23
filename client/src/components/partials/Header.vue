@@ -7,36 +7,58 @@
         :clipped="$vuetify.breakpoint.lgAndUp"
       >
         <v-list dense>
+
           <v-list-tile @click="navigate('dashboard')">
             <v-list-tile-action>
-              <v-icon>home</v-icon>
+              <v-icon medium color="black darken-2">home</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Home</v-list-tile-title>
+              <v-list-tile-title><strong>მთავარი</strong></v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+
           <v-list-tile @click="navigate('clients')">
             <v-list-tile-action>
-              <v-icon>contacts</v-icon>
+              <v-icon medium color="green darken-2">domain</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Clients</v-list-tile-title>
+              <v-list-tile-title><strong>კომპანიები და პროდუქტები</strong></v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+
           <v-list-tile @click="navigate('orders')">
             <v-list-tile-action>
-              <v-icon>payment</v-icon>
+              <v-icon medium color="purple darken-2">payment</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Orders</v-list-tile-title>
+              <v-list-tile-title><strong>შეკვეთები</strong></v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+
+          <v-list-tile @click="navigate('warehouse')">
+            <v-list-tile-action>
+              <v-icon medium color="brown darken-2">branding_watermark</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title><strong>საწყობი</strong></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile @click="navigate('supplies')">
+            <v-list-tile-action>
+              <v-icon medium color="blue darken-2">style</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title><strong>მარაგი</strong></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
         </v-list>
       </v-navigation-drawer>
-      
+
       <v-toolbar color="indigo" dark fixed app :clipped-left="$vuetify.breakpoint.lgAndUp">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title>Cardboard</v-toolbar-title>
+        <v-toolbar-title class="homeLink" @click="navigate('dashboard')">Cardboard</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat>{{this.$store.state.user.name}} {{this.$store.state.user.surname}}</v-btn>
@@ -53,7 +75,7 @@
     data () {
       return {
         routes: [
-          'Companies',  
+          'Companies',
           'Orders'
         ],
         drawer: false

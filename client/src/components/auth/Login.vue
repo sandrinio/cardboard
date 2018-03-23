@@ -1,40 +1,41 @@
 <template>
-  <v-layout row>
-    <v-flex xs6 offset-xs3>
-  <div class="white elevation-2">
+  <v-layout align-center justify-center>
+    <v-flex xs12 sm8 md4>
+  <v-card class="elevation-12">
     <v-toolbar flat dense class="blue darken-3" dark>
       <v-toolbar-title>Login</v-toolbar-title>
     </v-toolbar>
-
-    <div class="pl-4 pr-4 pt-2 pb-2">
+    <v-spacer></v-spacer>
+    <v-card-text>
       <v-form>
-          <div title="Login">
-            <br>
-            <v-text-field
-              label="Email"
-              v-model="email"
-              @keyup.enter="login"
-            ></v-text-field>
-            <br>
-            <v-text-field
-              label="Password"
-              type="password"
-              v-model="password"
-              @keyup.enter="login"
-            ></v-text-field>
-            <div class="danger-alert" v-html="error" />
-            <v-spacer></v-spacer>
-            <v-btn
-              dark
-              :loading="loading"
-              class="primary"
-              @click="login">
-              Login
-            </v-btn>
-          </div>
+          <v-text-field
+            prepend-icon="person"
+            label="Email"
+            v-model="email"
+            @keyup.enter="login"
+          ></v-text-field>
+          <br>
+          <v-text-field
+            prepend-icon="lock"
+            label="Password"
+            type="password"
+            v-model="password"
+            @keyup.enter="login"
+          ></v-text-field>
+          <div class="danger-alert" v-html="error" />
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            dark
+            :loading="loading"
+            class="primary"
+            @click="login">
+            Login
+          </v-btn>
+        </v-card-actions>
       </v-form>
-    </div>
-  </div>
+    </v-card-text>
+  </v-card>
     </v-flex>
   </v-layout>
 </template>

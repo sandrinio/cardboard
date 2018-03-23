@@ -2,13 +2,13 @@ const express = require('express')
 const router =  express.Router()
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
-const passport = require('passport')
 const config = require('../config/config')
 const bcrypt = require('bcrypt')
+const AuthController = require('../middleware/AuthenticationControllerPolicy')
 
 function jwtSignUser (user) {
-		const ONE_WEEK = 60 * 60 * 24 * 7
-		return jwt.sign(user, config.authentication.jwtSecret, {expiresIn: ONE_WEEK})
+		const THIRTY_MIN = 1800000
+		return jwt.sign(user, config.authentication.jwtSecret, {expiresIn: THIRTY_MIN})
 }
 
 router.post('/login', (req, res) => {
