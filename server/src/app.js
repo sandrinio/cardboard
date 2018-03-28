@@ -12,7 +12,7 @@ const AuthRoutes     = require('./routes/Auth.js')
 			OrderRoutes    = require('./routes/Orders')
 
 const app = express({
-				 index: './dist/index.html'
+			index: './dist/index.html'
 		 })
 
 app.use(history())
