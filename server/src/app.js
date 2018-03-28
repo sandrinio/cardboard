@@ -12,14 +12,13 @@ const AuthRoutes     = require('./routes/Auth.js')
 			OrderRoutes    = require('./routes/Orders')
 
 const app = express({
-			// index: './dist/index.html'
+			index: './dist/index.html'
 		 })
-
-// app.use(history())
+app.use(cors())
+app.use(history())
 app.use(serveStatic(__dirname + "/dist"));
 // app.use(morgan('combined'))
 app.use(bodyParser.json())
-app.use(cors())
 
 require('./passport')
 
