@@ -19,11 +19,7 @@ app.use(history())
 app.use(serveStatic(__dirname + "/dist"));
 // app.use(morgan('combined'))
 app.use(bodyParser.json())
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-  });
+app.use(cors())
 
 require('./passport')
 
