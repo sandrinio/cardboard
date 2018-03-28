@@ -73,6 +73,7 @@ import AuthService from '@/services/AuthServices'
             }
           })
           .catch((err) => {
+            this.loading = false
             console.log(err.data)
           })
       },

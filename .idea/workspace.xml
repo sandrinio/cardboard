@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b985fc5-efe5-4a53-bb22-adeb949954e0" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/client/src/components/supplies/index.vue" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/client/src/components/warehouse/index.vue" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/server/src/middleware/AuthenticationControllerPolicy.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Login.vue" afterPath="$PROJECT_DIR$/client/src/components/auth/Login.vue" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Register.vue" afterPath="$PROJECT_DIR$/client/src/components/auth/Register.vue" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/clients/Clients.vue" afterPath="$PROJECT_DIR$/client/src/components/clients/Clients.vue" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/clients/New.vue" afterPath="$PROJECT_DIR$/client/src/components/clients/New.vue" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/clients/ProductsComponent.vue" afterPath="$PROJECT_DIR$/client/src/components/clients/ProductsComponent.vue" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/orders/New.vue" afterPath="$PROJECT_DIR$/client/src/components/orders/New.vue" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/orders/index.vue" afterPath="$PROJECT_DIR$/client/src/components/orders/index.vue" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/partials/Header.vue" afterPath="$PROJECT_DIR$/client/src/components/partials/Header.vue" />
-      <change beforePath="$PROJECT_DIR$/client/src/router/index.js" afterPath="$PROJECT_DIR$/client/src/router/index.js" />
-      <change beforePath="$PROJECT_DIR$/server/src/dist/index.html" afterPath="$PROJECT_DIR$/server/src/dist/index.html" />
-      <change beforePath="$PROJECT_DIR$/server/src/dist/static/css/app.636cd76ef9c0f1cdf277c595546ac5df.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/src/dist/static/css/app.636cd76ef9c0f1cdf277c595546ac5df.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/src/dist/static/js/app.558679d121be6ca298bb.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/src/dist/static/js/app.558679d121be6ca298bb.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/src/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterPath="$PROJECT_DIR$/server/src/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" />
-      <change beforePath="$PROJECT_DIR$/server/src/routes/Auth.js" afterPath="$PROJECT_DIR$/server/src/routes/Auth.js" />
-      <change beforePath="$PROJECT_DIR$/server/src/routes/Orders.js" afterPath="$PROJECT_DIR$/server/src/routes/Orders.js" />
-    </list>
+    <list default="true" id="3b985fc5-efe5-4a53-bb22-adeb949954e0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -360,12 +338,12 @@
       <workItem from="1521356166920" duration="33962000" />
       <workItem from="1521647533806" duration="700000" />
       <workItem from="1521659304312" duration="223000" />
-      <workItem from="1521822285617" duration="10927000" />
+      <workItem from="1521822285617" duration="11034000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144818000" />
+    <option name="totallyTimeSpent" value="144925000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
