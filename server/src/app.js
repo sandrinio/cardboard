@@ -11,12 +11,11 @@ const AuthRoutes     = require('./routes/Auth.js')
 			ProductRoutes  = require('./routes/Product.js')
 			OrderRoutes    = require('./routes/Orders')
 
-const app = express({
-		// 	index: './dist/index.html'
-		 })
+const app = express()
+
 app.use(cors())
 app.use(morgan('combined'))
-// app.use(history())
+app.use(history())
 app.use(serveStatic(__dirname + "/dist"));
 app.use(bodyParser.json())
 
