@@ -21,7 +21,7 @@ export default new Router({
       path: '/',
       name: 'dashboard',
       component: Dashboard,
-      beforeEnter: Auth_Guard
+      // beforeEnter: Auth_Guard
     },
     {
       path: '/login',
@@ -32,7 +32,7 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register,
-      beforeEnter: Auth_Guard
+      // beforeEnter: Auth_Guard
     },
     {
       path: '/clients',
@@ -45,26 +45,26 @@ export default new Router({
       name: 'productShow',
       props: true,
       component: ProductShow,
-      beforeEnter: Auth_Guard
+      // beforeEnter: Auth_Guard
     },
     {
       path: '/clients/:id/new-product',
       name: 'newProduct',
       props: true,
       component: NewProduct,
-      beforeEnter: Auth_Guard
+      // beforeEnter: Auth_Guard
     },
     {
       path: '/orders',
       name: 'orders',
       component: Orders,
-      beforeEnter: Auth_Guard
+      // beforeEnter: Auth_Guard
     },
     {
       path: '/orders/new',
       name: 'newOrder',
       component: NewOrder,
-      beforeEnter: Auth_Guard
+      // beforeEnter: Auth_Guard
     },
     {
       path: '/warehouse',
