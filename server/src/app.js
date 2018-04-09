@@ -15,9 +15,9 @@ const app = express({
 		// 	index: './dist/index.html'
 		 })
 app.use(cors())
+app.use(morgan('combined'))
 // app.use(history())
 app.use(serveStatic(__dirname + "/dist"));
-// app.use(morgan('combined'))
 app.use(bodyParser.json())
 
 require('./passport')

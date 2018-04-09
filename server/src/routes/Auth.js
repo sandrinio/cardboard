@@ -11,6 +11,7 @@ function jwtSignUser (user) {
 		return jwt.sign(user, config.authentication.jwtSecret, {expiresIn: THIRTY_MIN})
 }
 
+
 router.post('/login', (req, res) => {
 	User.findOne({'username': req.body.email}, function (err, user) {
 			if(!user) {

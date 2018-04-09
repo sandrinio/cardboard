@@ -76,9 +76,6 @@ import AuthService from '@/services/AuthServices'
             this.loading = false
             console.log(err.data)
           })
-      },
-      testing () {
-        alert('done')
       }
     }
   }
