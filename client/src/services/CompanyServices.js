@@ -22,8 +22,8 @@ export default {
   },
   changeProduct (data, id) {
     return Api().post(`changeProduct/${id}`, data)
+  },
+  delProduct (id) {
+    return Api().post(`deleteProduct/${id}`)
   }
-  // changeProduct (data, id) {
-  //   return Api().post(`changeProduct/id`, data)
-  // }
 }

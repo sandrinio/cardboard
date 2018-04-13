@@ -61,10 +61,16 @@
         <v-toolbar-title class="homeLink" @click="navigate('dashboard')">Cardboard</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat>{{this.$store.state.user.name}} {{this.$store.state.user.surname}}</v-btn>
-        <v-btn v-if="!this.$store.state.isUserLoggedIn" flat @click="navigate('login')">Login</v-btn>
-        <v-btn v-else flat @click="logout">Logout</v-btn>
-        <v-btn flat @click="navigate('register')" v-if="$store.state.user.permission === 'Admin'">Register</v-btn>
+          <v-menu offset-y open-on-hover>
+            <v-btn flat dark slot="activator">{{this.$store.state.user.name}} {{this.$store.state.user.surname}}</v-btn>
+            <v-list>
+              <v-list-tile @click="">
+                <v-list-tile-title v-if="!this.$store.state.isUserLoggedIn" flat @click="navigate('login')">Login</v-list-tile-title>
+                <v-list-tile-title v-else flat @click="logout">Logout</v-list-tile-title>
+                <v-list-tile-title flat @click="navigate('register')" v-if="$store.state.user.permission === 'Admin'">Register</v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-menu>
         </v-toolbar-items>
       </v-toolbar>
     </div>
@@ -78,7 +84,8 @@
           'Companies',
           'Orders'
         ],
-        drawer: false
+        drawer: false,
+        navItems: [{title: 'Logout'}, {title: 'Register'}]
       }
     },
     methods: {

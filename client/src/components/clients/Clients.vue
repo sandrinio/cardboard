@@ -1,6 +1,6 @@
 <template>
-    <v-layout row fluid>
-      <v-flex xs12 md8>
+    <v-layout>
+      <v-flex xs12 md12>
           <v-card class="white elevation-2">
             <v-toolbar flat dense class="blue darken-3" dark>
               <v-toolbar-title>კომპანიები</v-toolbar-title>
@@ -16,31 +16,33 @@
                 v-model="search"
               ></v-text-field>
             </v-card-title>
-            <v-data-table
-              :loading="loading"
-              :headers="headers"
-              :items="items"
-              :search="search"
-            >
-              <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
-              <template slot="items" slot-scope="props">
-                <td>{{props.item.regDate.slice(0,8)}}</td>
-                <td class="text-xs-left pointer" @click="detailsDialog(props.item)">{{props.item.company}}</td>
-                <td class="text-xs-left">{{props.item.products.length}}</td>
-                <td class="text-xs-left">{{props.item.orders}}</td>
-                <td class="justify-center layout px-0">
-                  <v-btn icon class="mx-0" @click="editItem(props.item)">
-                    <v-icon color="teal">edit</v-icon>
-                  </v-btn>
-                  <v-btn icon class="mx-0" @click="deleteItem(props.item)">
-                    <v-icon color="pink">delete</v-icon>
-                  </v-btn>
-                </td>
-              </template>
-              <v-alert slot="no-results" :value="true" color="error" icon="warning">
-                Your search for "{{ search }}" found no results.
-              </v-alert>
-            </v-data-table>
+            <v-card-text>
+              <v-data-table
+                :loading="loading"
+                :headers="headers"
+                :items="items"
+                :search="search"
+              >
+                <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
+                <template slot="items" slot-scope="props">
+                  <td>{{props.item.regDate.slice(0,8)}}</td>
+                  <td class="text-xs-left pointer" @click="detailsDialog(props.item)">{{props.item.company}}</td>
+                  <td class="text-xs-left">{{props.item.products.length}}</td>
+                  <td class="text-xs-left">{{props.item.orders}}</td>
+                  <td class="justify-center layout px-0">
+                    <v-btn icon class="mx-0" @click="editItem(props.item)">
+                      <v-icon color="teal">edit</v-icon>
+                    </v-btn>
+                    <v-btn icon class="mx-0" @click="deleteItem(props.item)">
+                      <v-icon color="pink">delete</v-icon>
+                    </v-btn>
+                  </td>
+                </template>
+                <v-alert slot="no-results" :value="true" color="error" icon="warning">
+                  Your search for "{{ search }}" found no results.
+                </v-alert>
+              </v-data-table>
+            </v-card-text>
           </v-card>
       </v-flex>
       <v-dialog v-model="newCompanyDialog" max-width="500px">
@@ -63,10 +65,8 @@
             <v-spacer></v-spacer>
             <v-btn color="primary" flat @click="saveCompany">Submit</v-btn>
           </v-card-actions>
-
         </v-card>
       </v-dialog>
-
       <v-flex xs12 md4 class="ml-3">
         <products-component v-if="companyProductListDialog === true" :temporary="temporary"></products-component>
       </v-flex>
@@ -189,6 +189,8 @@ import ProductsComponent from '@/components/clients/ProductsComponent'
   }
 
   .pointer:hover {
+    color: #1a9273;
+    font-weight: bold;
     cursor: pointer;
   }
 

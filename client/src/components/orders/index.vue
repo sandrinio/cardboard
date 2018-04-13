@@ -1,11 +1,10 @@
 <template>
-    <v-layout>
-      <v-flex md10 xs12 offset-md1>
-        <div class="white elevation-2">
+    <v-layout align-center justify-center>
+      <v-flex xs12 sm12 md10>
+        <v-card class="white elevation-2">
           <v-toolbar flat dense class="blue darken-3" dark>
             <v-toolbar-title>შეკვეთები</v-toolbar-title>
           </v-toolbar>
-          <v-card>
             <v-card-title>
               <v-btn small class="primary"
                      v-if="$store.state.user.permission === 'Admin'"
@@ -22,6 +21,7 @@
                 v-model="search"
               ></v-text-field>
             </v-card-title>
+          <v-card-text>
             <v-data-table
               :loading="loading"
               :headers="headers"
@@ -36,23 +36,14 @@
                 <td class="text-xs-left"><span><strong>{{props.item.product}}</strong></span> - {{props.item.boxHeight}}x{{props.item.boxWidth}}x{{props.item.boxThickness}}</td>
                 <td class="text-xs-left">{{props.item.boxQuantity}}</td>
                 <td class="text-xs-left">{{props.item.dividerQuantity}}</td>
-                <td class="justify-center layout px-0">
-                  <v-btn icon class="mx-0" @click="deleteItem(props.item)">
-                    <v-icon color="pink">delete</v-icon>
-                  </v-btn>
-                </td>
               </template>
               <v-alert slot="no-results" :value="true" color="error" icon="warning">
                 Your search for "{{ search }}" found no results.
               </v-alert>
             </v-data-table>
-          </v-card>
-        </div>
+          </v-card-text>
+        </v-card>
       </v-flex>
-
-      <!--<v-flex md5 xs12 class="ml-3">-->
-        <!--<products-component v-if="companyProductListDialog === true" :temporary="temporary"></products-component>-->
-      <!--</v-flex>-->
     </v-layout>
 </template>
 
@@ -76,15 +67,11 @@ export default {
         { text: 'კომპანია', value: 'company' },
         { text: 'პროდუქტი', value: 'product' },
         { text: 'ყუთი', value: 'boxQuantity' },
-        { text: 'ტიხარი', value: 'dividerQuantity' },
-        { text: 'Actions', value: 'Actions' }
+        { text: 'ტიხარი', value: 'dividerQuantity' }
       ],
     }
   },
   methods: {
-    deleteItem (item) {
-      console.log(item)
-    },
     navigateTo(route) {
       this.$router.push(route)
     }

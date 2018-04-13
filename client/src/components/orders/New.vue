@@ -1,14 +1,13 @@
 <template>
-  <v-layout>
-    <v-flex md10 xs12 offset-md1>
-      <div class="white elevation-2">
+  <v-layout align-center justify-center>
+    <v-flex xs12 sm12 md10>
+      <v-card class="white elevation-2">
         <v-toolbar flat dense class="blue darken-3" dark>
           <v-toolbar-title>ახალი შეკვეთა</v-toolbar-title>
         </v-toolbar>
         <v-progress-linear v-if="loading" :loading="loading"></v-progress-linear>
-        <v-card>
           <v-form>
-            <v-card-title>
+            <v-card-text>
               <v-layout row wrap>
                 <v-flex xs6>
                   <v-subheader>აირჩიეთ კომპანია</v-subheader>
@@ -41,13 +40,14 @@
                       <th>ყუთი</th>
                     </tr>
                     <tr>
-                      <td><span v-for="(layer) in selectedProductDetails.layers">{{layer}}<br></span></td>
+                      <td><span v-for="(layer, index) in selectedProductDetails.layers">#{{ index+1 }} შრე: {{layer}}<br></span></td>
                       <td>{{selectedProductDetails.profile}}</td>
-                      <td>{{selectedProductDetails.mDividerHeight}}x{{selectedProductDetails.mDividerWidth}}x{{selectedProductDetails.mDividerThickness}}</td>
-                      <td>{{selectedProductDetails.fDividerHeight}}x{{selectedProductDetails.fDividerWidth}}x{{selectedProductDetails.fDividerThickness}}</td>
+                      <td>{{selectedProductDetails.mDividerHeight}}x{{selectedProductDetails.mDividerWidth}} რაოდ.{{selectedProductDetails.mDividerQuantity}}</td>
+                      <td>{{selectedProductDetails.fDividerHeight}}x{{selectedProductDetails.fDividerWidth}} რაოდ.{{selectedProductDetails.fDividerQuantity}}</td>
                       <td>{{selectedProductDetails.boxHeight}}x{{selectedProductDetails.boxWidth}}x{{selectedProductDetails.boxThickness}}</td>
                     </tr>
                   </table>
+                  <v-spacer></v-spacer>
                 </v-flex>
               </v-layout>
               <v-layout>
@@ -85,17 +85,19 @@
                   ></v-text-field>
                 </v-flex>
               </v-layout>
-            </v-card-title>
-            <v-btn
-              dark
-              :btnLoading="btnLoading"
-              class="primary"
-              @click="newOrder">
-              Confirm
-            </v-btn>
+            </v-card-text>
+            <v-spacer></v-spacer>
+            <v-card-actions>
+              <v-btn
+                dark
+                :btnLoading="btnLoading"
+                class="primary"
+                @click="newOrder">
+                Confirm
+              </v-btn>
+            </v-card-actions>
           </v-form>
-        </v-card>
-      </div>
+      </v-card>
     </v-flex>
   </v-layout>
 </template>

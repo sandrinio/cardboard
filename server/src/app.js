@@ -14,7 +14,7 @@ const AuthRoutes     = require('./routes/Auth.js')
 const app = express()
 
 app.use(cors())
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 app.use(history())
 app.use(serveStatic(__dirname + "/dist"));
 app.use(bodyParser.json())
