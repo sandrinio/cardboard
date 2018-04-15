@@ -7,5 +7,8 @@ export default {
   },
   ordersGetter () {
     return Api().get('ordersGetter')
+  },
+  orderGetter (id) {
+    return Api().get(`orderGetter/${id}`)
   }
 }

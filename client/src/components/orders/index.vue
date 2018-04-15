@@ -4,6 +4,10 @@
         <v-card class="white elevation-2">
           <v-toolbar flat dense class="blue darken-3" dark>
             <v-toolbar-title>შეკვეთები</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn icon @click="navigateTo('/')">
+              <v-icon>arrow_back</v-icon>
+            </v-btn>
           </v-toolbar>
             <v-card-title>
               <v-btn small class="primary"
@@ -32,8 +36,8 @@
               <template slot="items" slot-scope="props">
                 <td :class="props.item.status">{{props.item.status}}</td>
                 <td class="text-xs-left">{{props.item.deadline.slice(0,8)}}</td>
-                <td class="text-xs-left">{{props.item.company}}</td>
-                <td class="text-xs-left"><span><strong>{{props.item.product}}</strong></span> - {{props.item.boxHeight}}x{{props.item.boxWidth}}x{{props.item.boxThickness}}</td>
+                <td class="text-xs-left pointer" @click="navigateTo(`/orders/show/${props.item._id}`)">{{props.item.company}}</td>
+                <td class="text-xs-left pointer" @click="navigateTo(`/orders/show/${props.item._id}`)"><span><strong>{{props.item.product}}</strong></span> - {{props.item.boxHeight}}x{{props.item.boxWidth}}x{{props.item.boxThickness}}</td>
                 <td class="text-xs-left">{{props.item.boxQuantity}}</td>
                 <td class="text-xs-left">{{props.item.dividerQuantity}}</td>
               </template>
@@ -91,21 +95,5 @@ export default {
 </script>
 
 <style scoped>
-.In-Progress {
-  color: #00acc1;
-  font-weight: bold;
-}
-.Complete {
-  color: darkgreen;
-  font-weight: bold;
-}
-.On-Hold {
-  color: #cccc00;
-  font-weight: bold;
-}
-.Canceled {
-  color: darkred;
-  font-weight: bold;
-}
 
 </style>

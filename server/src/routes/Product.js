@@ -20,7 +20,6 @@ router.get('/getProduct/:id', (req, res) => {
 })
 
 router.get('/getCompany/:id', (req, res) => {
-		console.log(req.params.id)
 		Company.findById(req.params.id, function (err, company) {
 				if(err) return res.send({error: err})
 				res.status(200).send(company)

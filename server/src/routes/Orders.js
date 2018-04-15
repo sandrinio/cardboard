@@ -34,7 +34,7 @@ router.post('/new-order', (req, res) => {
 						result.orders = '1'
 						result.save()
 						console.log(result)
-				}else{
+				}else {
 					result.orders = +result.orders +1
 						result.save()
 						console.log(result)
@@ -50,6 +50,15 @@ router.get('/ordersGetter', (req, res) => {
 		if(err) return res.send({error: err})
 		res.send({orders: result})
 	})
+})
+
+router.get('/orderGetter/:id', (req, res) => {
+		Order.findById(req.params.id, function (err, result) {
+				if(err) return res.send({error: err})
+				// if(err) return console.log(err)
+
+				res.send({order: result})
+		})
 })
 
 module.exports = router

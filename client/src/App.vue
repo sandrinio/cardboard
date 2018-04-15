@@ -44,4 +44,25 @@ export default {
 .danger-alert {
   color: darkred;
 }
+.In-Progress {
+  color: #00acc1;
+  font-weight: bold;
+}
+.Complete {
+  color: darkgreen;
+  font-weight: bold;
+}
+.On-Hold {
+  color: #cccc00;
+  font-weight: bold;
+}
+.Canceled {
+  color: darkred;
+  font-weight: bold;
+}
+.pointer:hover {
+  color: #1a9273;
+  font-weight: bold;
+  cursor: pointer;
+}
 </style>

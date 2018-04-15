@@ -4,6 +4,10 @@
       <v-card class="white elevation-2">
         <v-toolbar flat dense class="blue darken-3" dark>
           <v-toolbar-title>ახალი შეკვეთა</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn icon @click="navigateTo('/orders')">
+            <v-icon>arrow_back</v-icon>
+          </v-btn>
         </v-toolbar>
         <v-progress-linear v-if="loading" :loading="loading"></v-progress-linear>
           <v-form>
@@ -65,14 +69,38 @@
                 </v-flex>
               </v-layout>
               <v-layout row>
-                <v-flex xs12>
-                  <h4>Deadline</h4>
-                  <v-date-picker
+                <v-flex xs6>
+                  <!--<v-date-picker-->
+                    <!--full-width-->
+                    <!--landscape-->
+                    <!--class="mt-3"-->
+                    <!--v-model="order.deadline"-->
+                  <!--&gt;</v-date-picker>-->
+                  <v-menu
+                    ref="menu"
+                    lazy
+                    :close-on-content-click="false"
+                    v-model="menu"
+                    transition="scale-transition"
+                    offset-y
                     full-width
-                    landscape
-                    class="mt-3"
-                    v-model="order.deadline"
-                  ></v-date-picker>
+                    :nudge-right="40"
+                    min-width="290px"
+                    :return-value.sync="order.deadline"
+                  >
+                    <v-text-field
+                      slot="activator"
+                      label="შესრულების ბოლო ვადა"
+                      v-model="order.deadline"
+                      prepend-icon="event"
+                      readonly
+                    ></v-text-field>
+                    <v-date-picker v-model="order.deadline" no-title scrollable>
+                      <v-spacer></v-spacer>
+                      <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
+                      <v-btn flat color="primary" @click="$refs.menu.save(order.deadline)">OK</v-btn>
+                    </v-date-picker>
+                  </v-menu>
                 </v-flex>
               </v-layout>
               <v-layout row class="mt-4">
@@ -117,6 +145,7 @@ import OrderServices from '@/services/OrderServices'
           showDetails: false,
           loading: true,
           btnLoading: false,
+          menu: '',
           search: '',
           order: {
             company: '',
@@ -158,6 +187,9 @@ import OrderServices from '@/services/OrderServices'
             .catch((err) => {
               console.log(err.data)
             })
+        },
+        navigateTo(route){
+          this.$router.push(route)
         }
       },
       mounted () {

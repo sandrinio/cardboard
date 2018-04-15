@@ -1,11 +1,15 @@
 <template>
-  <v-layout row>
-    <v-flex xs6 offset-xs3>
-      <div class="white elevation-2">
+  <v-layout align-center justify-center>
+    <v-flex xs12 sm12 md10>
+      <v-card class="white elevation-2">
         <v-toolbar flat dense class="blue darken-3" dark>
           <v-toolbar-title>Register</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn icon @click="navigateBack('dashboard')">
+            <v-icon>arrow_back</v-icon>
+          </v-btn>
         </v-toolbar>
-        <div class="pl-4 pr-4 pt-2 pb-2">
+        <v-card-text>
           <div title="Login">
             <br>
             <v-text-field
@@ -58,8 +62,8 @@
               Register
             </v-btn>
           </div>
-        </div>
-      </div>
+        </v-card-text>
+      </v-card>
     </v-flex>
   </v-layout>
 </template>
@@ -116,6 +120,9 @@ import AuthService from '@/services/AuthServices'
             this.loading = false
             console.log(err.data)
           })
+      },
+      navigateBack (routeName){
+        this.$router.push({name: routeName})
       }
     }
   }

@@ -64,10 +64,8 @@
           <v-menu offset-y open-on-hover>
             <v-btn flat dark slot="activator">{{this.$store.state.user.name}} {{this.$store.state.user.surname}}</v-btn>
             <v-list>
-              <v-list-tile @click="">
-                <v-list-tile-title v-if="!this.$store.state.isUserLoggedIn" flat @click="navigate('login')">Login</v-list-tile-title>
-                <v-list-tile-title v-else flat @click="logout">Logout</v-list-tile-title>
-                <v-list-tile-title flat @click="navigate('register')" v-if="$store.state.user.permission === 'Admin'">Register</v-list-tile-title>
+              <v-list-tile v-for="navItem in navItems" @click="userMenu(navItem.title)" :key="navItem.title">
+                <v-list-tile-title>{{navItem.title}}</v-list-tile-title>
               </v-list-tile>
             </v-list>
           </v-menu>
@@ -85,20 +83,35 @@
           'Orders'
         ],
         drawer: false,
-        navItems: [{title: 'Logout'}, {title: 'Register'}]
+        navItems: [
+          {
+            title: 'Logout'
+          },
+          {
+            title: 'Register'
+          }
+          ]
       }
     },
     methods: {
       navigate (routeName){
         this.$router.push({name: routeName})
       },
-      logout () {
-        this.$store.dispatch('setToken', null)
-        this.$store.dispatch('setUser', null)
-        this.$router.push({
-          path: '/login'
-        })
+      userMenu(e) {
+
+        if(e === 'Logout'){
+          this.$store.dispatch('setToken', null)
+          this.$store.dispatch('setUser', null)
+          this.$router.push({
+            path: '/login'
+          })
+        }else{
+            this.$router.push({name: 'register'})
+        }
       }
+    },
+    computed: {
+
     }
   }
 </script>
