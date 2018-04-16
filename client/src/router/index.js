@@ -12,6 +12,7 @@ import NewOrder from '@/components/orders/New'
 import Warehouse from '@/components/warehouse/index'
 import Supplies from '@/components/supplies/index'
 import ShowOrder from '@/components/orders/Show'
+import AddSupplies from '@/components/supplies/New'
 
 
 Vue.use(Router)
@@ -84,6 +85,12 @@ export default new Router({
       path: '/supplies',
       name: 'supplies',
       component: Supplies,
+      beforeEnter: Auth_Guard
+    },
+    {
+      path: '/supplies/new',
+      name: 'addSupplies',
+      component: AddSupplies,
       beforeEnter: Auth_Guard
     }
   ]

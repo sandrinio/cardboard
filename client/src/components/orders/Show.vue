@@ -137,9 +137,7 @@
           <v-btn
             color="success"
           >დამახსოვრება</v-btn>
-
           <v-spacer></v-spacer>
-
           <v-btn
             color="red"
             dark
@@ -204,5 +202,7 @@ export default {
     outline: none;
     font-weight: bolder;
     color: darkblue;
+    border-bottom: 1px darkblue solid;
+    width: 50%;
   }
 </style>

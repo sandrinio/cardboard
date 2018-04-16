@@ -5,6 +5,10 @@
         <v-card class="white elevation-2">
           <v-toolbar flat dense class="blue darken-3" dark>
             <v-toolbar-title>{{product.productName}}</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn icon @click="navigateTo('/clients')">
+              <v-icon>arrow_back</v-icon>
+            </v-btn>
           </v-toolbar>
           <v-spacer></v-spacer>
           <v-card-text>
@@ -206,6 +210,9 @@ export default {
         .catch((err) => {
           console.log(err)
         })
+    },
+    navigateTo (route) {
+      this.$router.push(route)
     }
   },
   mounted () {

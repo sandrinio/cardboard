@@ -70,12 +70,6 @@
               </v-layout>
               <v-layout row>
                 <v-flex xs6>
-                  <!--<v-date-picker-->
-                    <!--full-width-->
-                    <!--landscape-->
-                    <!--class="mt-3"-->
-                    <!--v-model="order.deadline"-->
-                  <!--&gt;</v-date-picker>-->
                   <v-menu
                     ref="menu"
                     lazy
