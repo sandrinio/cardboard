@@ -10,5 +10,11 @@ export default {
   },
   orderGetter (id) {
     return Api().get(`orderGetter/${id}`)
+  },
+  editOrder (data) {
+    return Api().post(`editOrder`, data)
+  },
+  deleteOrder (data){
+    return Api().post('deleteOrder', data)
   }
 }

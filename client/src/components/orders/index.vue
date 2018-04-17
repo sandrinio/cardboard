@@ -34,7 +34,7 @@
             >
               <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
               <template slot="items" slot-scope="props">
-                <td :class="props.item.status">{{props.item.status}}</td>
+                <td :class="props.item.status"><strong>{{props.item.status}}</strong></td>
                 <td class="text-xs-left">{{props.item.deadline.slice(0,8)}}</td>
                 <td class="text-xs-left pointer" @click="navigateTo(`/orders/show/${props.item._id}`)">{{props.item.company}}</td>
                 <td class="text-xs-left pointer" @click="navigateTo(`/orders/show/${props.item._id}`)"><span><strong>{{props.item.product}}</strong></span> - {{props.item.boxHeight}}x{{props.item.boxWidth}}x{{props.item.boxThickness}}</td>

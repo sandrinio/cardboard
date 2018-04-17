@@ -1,7 +1,7 @@
 <template>
 <v-layout align-center justify-center>
-  <v-progress-linear v-if="loading" :indeterminate="true"></v-progress-linear>
   <v-flex xs12 sm12 md10>
+    <v-progress-linear xs12 v-if="loading" :indeterminate="true"></v-progress-linear>
     <v-card>
       <v-toolbar flat dense class="blue darken-3" dark>
         <v-toolbar-title>შეკვეთა - </v-toolbar-title>
@@ -33,19 +33,17 @@
           </tr>
           <tr>
             <td><strong>კომპანია</strong></td>
-            <td v-if="!editMode">{{order.company}}</td>
-            <td v-if="editMode"><input type="text" v-model="order.company"></td>
+            <td>{{order.company}}</td>
           </tr>
           <tr>
             <td><strong>პროდუქტი</strong></td>
-            <td v-if="!editMode">{{order.product}}</td>
-            <td v-if="editMode"><input type="text" v-model="order.product"></td>
+            <td>{{order.product}}</td>
           </tr>
           <tr>
             <td><strong>შესრულების ვადა</strong></td>
             <td v-if="!editMode">{{order.deadline}}</td>
             <td v-if="editMode">
-              <v-flex xs11 sm5>
+              <v-flex>
                 <v-menu
                   ref="menu"
                   lazy
@@ -60,7 +58,7 @@
                 >
                   <v-text-field
                     slot="activator"
-                    label="Picker in menu"
+                    label="ვადა"
                     v-model="editedDeadline"
                     prepend-icon="event"
                     readonly
@@ -76,23 +74,7 @@
           </tr>
           <tr>
             <td><strong>ყუთის ზომა</strong></td>
-            <td v-if="!editMode">{{order.boxHeight}}x{{order.boxWidth}}x{{order.boxThickness}}</td>
-            <td v-if="editMode">
-              <v-layout>
-                <v-flex xs3>
-                  <label for="height">სიმაღლე: </label>
-                  <input type="text" id="height" v-model="order.boxHeight">
-                </v-flex>
-                <v-flex xs3>
-                  <label for="width">სიგანე: </label>
-                  <input type="text" id="width" v-model="order.boxWidth">
-                </v-flex>
-                <v-flex xs3>
-                  <label for="thickness">სიგრძე: </label>
-                  <input type="text" id="thickness" v-model="order.boxThickness">
-                </v-flex>
-              </v-layout>
-            </td>
+            <td>{{order.boxHeight}}x{{order.boxWidth}}x{{order.boxThickness}}</td>
           </tr>
           <tr>
             <td><strong>ყუთის შეკვეთა</strong></td>
@@ -101,25 +83,9 @@
           </tr>
           <tr>
             <td><strong>ტიხარის ზომა</strong></td>
-            <td v-if="!editMode">
+            <td>
               მამალი: {{order.mDividerHeight}}x{{order.mDividerWidth}} <br>
               დედალი: {{order.fDividerHeight}}x{{order.fDividerWidth}}
-            </td>
-            <td v-if="editMode">
-              <v-layout>
-                <v-flex xs4>
-                  მამალი: <label for="mHeight">სიმაღლე</label>
-                  <input type="text" id="mHeight" v-model="order.mDividerHeight">
-                  <label for="mWidth">სიგრძე</label>
-                  <input type="text" id="mWidth" v-model="order.mDividerWidth"> <br>
-                </v-flex>
-                <v-flex xs4>
-                  დედალი: <label for="fHeight">სიმაღლე</label>
-                  <input type="text" id="fHeight" v-model="order.fDividerHeight">
-                  <label for="fWidth">სიგრძე</label>
-                  <input type="text" id="fWidth" v-model="order.fDividerWidth">
-                </v-flex>
-              </v-layout>
             </td>
           </tr>
           <tr>
@@ -134,14 +100,18 @@
           </tr>
         </table>
         <v-card-actions v-if="editMode">
-          <v-btn
-            color="success"
-          >დამახსოვრება</v-btn>
           <v-spacer></v-spacer>
           <v-btn
             color="red"
             dark
+            @click="del"
+            :loading="loading"
           >გაუქმება</v-btn>
+          <v-btn
+            :loading="loading"
+            color="success"
+            @click="confirm"
+          >დამახსოვრება</v-btn>
         </v-card-actions>
       </v-card-text>
     </v-card>
@@ -170,6 +140,35 @@ export default {
     },
     editModeBtn (){
 	    this.editMode = !this.editMode
+    },
+    confirm () {
+	    this.loading = true
+	    delete this.order.regDate
+
+      if(this.editedDeadline !== ""){
+	      this.order.deadline = this.editedDeadline
+      }
+	    OrderServices.editOrder(this.order)
+        .then((res)=>{
+          this.loading = false
+          this.$router.push({name: 'orders'})
+        })
+        .catch((err)=> {
+          this.loading = false
+          console.log(err)
+        })
+    },
+    del (){
+      this.loading = true
+      OrderServices.deleteOrder(this.order)
+        .then((res) => {
+          this.loading = false
+          this.$router.push({name: 'orders'})
+        })
+        .catch((err) => {
+          this.loading = false
+          console.log(err)
+        })
     }
   },
   mounted () {
@@ -198,11 +197,11 @@ export default {
     display: block;
     font-weight: bold;
   }
-  input[type=text]:focus {
+  input[type=text] {
     outline: none;
     font-weight: bolder;
     color: darkblue;
     border-bottom: 1px darkblue solid;
-    width: 50%;
+    width: 80%;
   }
 </style>

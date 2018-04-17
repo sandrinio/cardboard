@@ -1,6 +1,7 @@
 <template>
   <v-layout align-center justify-center>
     <v-flex xs12 sm12 md10>
+      <v-progress-linear xs12 v-if="loading" :indeterminate="true"></v-progress-linear>
       <v-card class="white elevation-2">
         <v-toolbar flat dense class="blue darken-3" dark>
           <v-toolbar-title>მარაგის შევსება</v-toolbar-title>
@@ -10,35 +11,6 @@
           </v-btn>
         </v-toolbar>
         <v-card-text>
-          <!--<table>-->
-            <!--<tr>-->
-              <!--<th>ქაღალდი</th>-->
-              <!--<th>წებო</th>-->
-              <!--<th>საღებავი</th>-->
-              <!--<th>შესაფუთი რულონი</th>-->
-              <!--<th>კრახმალი</th>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td><v-text-field label="ფასი" v-model="paperPrice"></v-text-field></td>-->
-              <!--<td><v-text-field label="ფასი" v-model="gluePrice"></v-text-field></td>-->
-              <!--<td><v-text-field label="ფასი" v-model="dyePrice"></v-text-field></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td><v-select label="მატერია" :items="materials" v-model="paperMaterial"></v-select></td>-->
-              <!--<td><v-text-field label='წონა' v-model="glueWeight"></v-text-field></td>-->
-              <!--<td><v-text-field label='ფერი' v-model="dyeColor"></v-text-field></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td><v-text-field label="წონა" v-model="paperWeight"></v-text-field></td>-->
-              <!--<td><v-text-field label="ვედრო" v-model="dyeWeight"></v-text-field></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td><v-text-field label="სიგანე" v-model="paperWidth"></v-text-field></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td><v-text-field label="გრამაჟი" v-model="paperGrm"></v-text-field></td>-->
-            <!--</tr>-->
-          <!--</table>-->
           <v-tabs fixed-tabs>
             <v-tab v-for="tab in tabs" :key="tab" @click="funcTest(tab)">
               <strong>{{ tab }}</strong>
@@ -68,6 +40,8 @@
               >გაუქმება</v-btn>
               <v-btn
                 color="success"
+                :loading = loading
+                @click="paperSubmit"
               >დამახსოვრება</v-btn>
             </v-card-actions>
           </v-card>
@@ -144,7 +118,6 @@
                 <v-layout row wrap >
                   <v-flex sm3 xs12>
                     <v-text-field label="ფასი" type="number" v-model="wrapperPrice"></v-text-field>
-                    <v-text-field label="ფასი" type="number" v-model="wrapperPrice"></v-text-field>
                     <v-text-field label="რაოდენობა" type="number" v-model="wrapperQuantity"></v-text-field>
                   </v-flex>
                 </v-layout>
@@ -169,10 +142,12 @@
 </template>
 
 <script>
+  import SupplyServices from '@/services/SupplyServices'
 		export default {
 				name: "New",
       data (){
 				  return {
+				    loading: false,
 				    paperTab: true,
             glueTab: false,
             dyeTab: false,
@@ -230,23 +205,25 @@
             this.starchTab = false
             this.wrapperTab = true
           }
-
+        },
+        paperSubmit () {
+          this.loading = true
+          const newPaper = {
+            price: this.paperPrice,
+            width: this.paperWidth,
+            weight: this.paperWeight,
+            grm: this.paperGrm,
+            material: this.paperMaterial
+          }
+          SupplyServices.addPaper(newPaper)
+            .then((res) => {
+              this.loading = false
+              this.$router.push({name: 'supplies'})
+            })
         }
       }
 		}
 </script>
 
 <style scoped>
-  /*td, th {*/
-    /*border: 1px solid #dddddd;*/
-    /*text-align: left;*/
-    /*padding: 14px;*/
-  /*}*/
-  /*.fabBtn {*/
-    /*float: right;*/
-  /*}*/
-  /*label {*/
-    /*display: block;*/
-    /*font-weight: bold;*/
-  /*}*/
 </style>

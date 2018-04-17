@@ -21,7 +21,7 @@
         <hr>
         <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" @click="navigateTo({name: 'newProduct', params: {id: temporary._id}})" flat >New Product</v-btn>
+        <v-btn color="primary" @click="navigateTo({name: 'newProduct', params: {id: temporary._id}})" flat >პროდუქტის დამატება</v-btn>
         </v-card-actions>
       </v-card>
   <!--</v-layout>-->

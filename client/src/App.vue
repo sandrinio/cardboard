@@ -53,7 +53,7 @@ export default {
   font-weight: bold;
 }
 .On-Hold {
-  color: #cccc00;
+  color: #ad8300;
   font-weight: bold;
 }
 .Canceled {

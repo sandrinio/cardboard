@@ -10,6 +10,7 @@ const history = require('connect-history-api-fallback');
 const AuthRoutes     = require('./routes/Auth.js')
 			ProductRoutes  = require('./routes/Product.js')
 			OrderRoutes    = require('./routes/Orders')
+			SupplyRoutes   = require('./routes/Supplies')
 
 const app = express()
 
@@ -24,6 +25,7 @@ require('./passport')
 app.use(AuthRoutes)
 app.use(ProductRoutes)
 app.use(OrderRoutes)
+app.use(SupplyRoutes)
 
 app.listen(config.port, () => {
 		console.log(`Server is running on Port ${config.port}`)

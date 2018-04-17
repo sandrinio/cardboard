@@ -33,7 +33,6 @@ router.post('/new-order', (req, res) => {
 						console.log('reached')
 						result.orders = '1'
 						result.save()
-						console.log(result)
 				}else {
 					result.orders = +result.orders +1
 						result.save()
@@ -52,11 +51,39 @@ router.get('/ordersGetter', (req, res) => {
 	})
 })
 
+router.post('/deleteOrder', (req, res) => {
+		Order.findByIdAndRemove(req.body._id, function (err, result) {
+				if(err) return res.send({error: err})
+				res.status(200).send({success: 'Order Deleted'})
+		})
+		Company.findOne({'company': req.body.company}, function (err, result) {
+				if(err) return res.send({error: err})
+				if(!result.hasOwnProperty('orders') && isNaN(result.orders)){
+						result.orders = '1'
+						result.save()
+				}else {
+						result.orders = +result.orders -1
+						result.save()
+						console.log(result)
+				}
+		})
+})
+
+router.post('/editOrder', (req, res) => {
+		let data = req.body
+		const deadlineDate = req.body.deadline
+		delete data.deadline
+		data.deadline = dateFormat(deadlineDate, 'd-mmmm-yyyy hh:mm:ss')
+		console.log(data)
+		Order.findByIdAndUpdate(data._id, data, function (err, info) {
+				if(err) return res.send({error: err})
+				res.status(200).send({success: 'success'})
+		})
+})
+
 router.get('/orderGetter/:id', (req, res) => {
 		Order.findById(req.params.id, function (err, result) {
 				if(err) return res.send({error: err})
-				// if(err) return console.log(err)
-
 				res.send({order: result})
 		})
 })

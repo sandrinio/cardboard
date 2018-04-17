@@ -1,12 +1,12 @@
 <template>
     <v-layout>
-      <v-flex xs12 md12>
+      <v-flex xs12 sm8>
           <v-card class="white elevation-2">
             <v-toolbar flat dense class="blue darken-3" dark>
               <v-toolbar-title>კომპანიები</v-toolbar-title>
             </v-toolbar>
             <v-card-title>
-              <v-btn small class="primary" dark @click.stop="newCompanyDialog = true">New Company</v-btn>
+              <v-btn small class="primary" dark @click.stop="newCompanyDialog = true">ახალი კომპანია</v-btn>
               <v-spacer></v-spacer>
               <v-text-field
                 append-icon="search"
@@ -45,6 +45,9 @@
             </v-card-text>
           </v-card>
       </v-flex>
+      <v-flex xs12 sm4 v-if="companyProductListDialog === true" class="ml-2">
+        <products-component :temporary="temporary"></products-component>
+      </v-flex>
       <v-dialog v-model="newCompanyDialog" max-width="500px">
         <v-card>
           <v-card-title>
@@ -67,9 +70,6 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-      <v-flex xs12 md4 class="ml-3">
-        <products-component v-if="companyProductListDialog === true" :temporary="temporary"></products-component>
-      </v-flex>
     </v-layout>
 </template>
 
@@ -93,10 +93,10 @@ import ProductsComponent from '@/components/clients/ProductsComponent'
             sortable: false,
             value: 'name'
           },
-          { text: 'Company Name', value: 'company' },
-          { text: 'Products', value: 'products' },
-          { text: 'Total Orders', value: 'total orders' },
-          { text: 'Actions', value: 'Actions' }
+          { text: 'კომპანია', value: 'company' },
+          { text: 'პროდუქტები', value: 'products' },
+          { text: 'შეკვეთები', value: 'total orders' },
+          { text: '', value: 'Actions' }
         ],
         items: []
       }

@@ -15,7 +15,7 @@
             <v-form>
               <v-flex xs4>
                 <v-text-field
-                  label="Product Name"
+                  label="პროდუქტის სახელი"
                   v-model="product.productName"
                 ></v-text-field>
               </v-flex>
@@ -137,9 +137,9 @@
               </v-layout>
               <v-spacer></v-spacer>
               <v-card-actions>
-              <v-btn class="primary" dark @click="confirm">change</v-btn>
+              <v-btn class="primary" dark @click="confirm">შეცვლა</v-btn>
                 <v-spacer></v-spacer>
-                <v-btn class="red" dark @click="del">Delete</v-btn>
+                <v-btn class="red" dark @click="del">წაშლა</v-btn>
               </v-card-actions>
             </v-form>
           </v-card-text>

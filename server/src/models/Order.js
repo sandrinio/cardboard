@@ -14,7 +14,7 @@ const OrderSchema = new mongoose.Schema({
 	fDividerWidth: String,
 	deadline: String,
 	comment: String,
-	regDate: Date,
+	regDate: String,
 	status: String
 })
 
