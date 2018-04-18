@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const StarchSchema = new mongoose.Schema({
 		price: String,
-		weight: String,
+		pack: String,
 		regDate: String,
 })
 

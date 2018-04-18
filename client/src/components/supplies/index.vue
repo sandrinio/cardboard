@@ -19,9 +19,8 @@
           <v-spacer></v-spacer>
         </v-card-title>
         <v-card-text>
-
-
-
+          <paper-part-component></paper-part-component>
+          <glue-part-component></glue-part-component>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -29,8 +28,11 @@
 </template>
 
 <script>
+import PaperPartComponent from '@/components/supplies/PaperPart'
+import GluePartComponent from '@/components/supplies/GluePart'
+
 export default {
-    name: "supplies",
+  components: {PaperPartComponent, GluePartComponent},
   data () {
       return {
 
@@ -39,14 +41,16 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.push(route)
+    },
+    deletePaper () {
+      console.log('delete BTN')
     }
   },
-  computed: {
+  mounted () {
 
   }
 }
 </script>
 
 <style scoped>
-
 </style>

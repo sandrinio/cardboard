@@ -5,8 +5,14 @@ export default {
   addPaper (data) {
     return Api().post('/addPaper', data)
   },
+  paperGetter (){
+    return Api().get('/paperGetter')
+  },
   addGlue (data) {
     return Api().post('/addGlue', data)
+  },
+  glueGetter () {
+    return Api().get('/glueGetter')
   },
   addDye (data) {
     return Api().post('/addDye', data)

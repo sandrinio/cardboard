@@ -50,8 +50,8 @@
               <v-container grid-list-lg>
                 <v-layout row wrap >
                   <v-flex sm3 xs12>
-                    <v-text-field label="ფასი" type="number" v-model="gluePrice"></v-text-field>
-                    <v-text-field label="წონა" type="number" v-model="glueWeight"></v-text-field>
+                    <v-text-field label="1kg ფასი" type="number" v-model="gluePrice"></v-text-field>
+                    <v-text-field label="მთლიანი წონა" type="number" v-model="glueWeight"></v-text-field>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -64,7 +64,9 @@
               >გაუქმება</v-btn>
               <v-btn
                 color="success"
-              >დამახსოვრება</v-btn>
+                @click="glueSubmit"
+                :loading="loading"
+              ><strong>დამახსოვრება</strong></v-btn>
             </v-card-actions>
           </v-card>
           <v-card v-if="dyeTab">
@@ -73,7 +75,7 @@
                 <v-layout row wrap >
                   <v-flex sm3 xs12>
                     <v-text-field label="ფასი" type="number" v-model="dyePrice"></v-text-field>
-                    <v-text-field label="ფერი" type="number" v-model="dyeColor"></v-text-field>
+                    <v-text-field label="ფერი" type="text" v-model="dyeColor"></v-text-field>
                     <v-text-field label="რაოდენობა" type="number" v-model="dyeQuantity"></v-text-field>
                   </v-flex>
                 </v-layout>
@@ -87,6 +89,8 @@
               >გაუქმება</v-btn>
               <v-btn
                 color="success"
+                :loading="loading"
+                @click="dyeSubmit"
               >დამახსოვრება</v-btn>
             </v-card-actions>
           </v-card>
@@ -95,8 +99,8 @@
               <v-container grid-list-lg>
                 <v-layout row wrap >
                   <v-flex sm3 xs12>
-                    <v-text-field label="ფასი" type="number" v-model="starchPrice"></v-text-field>
-                    <v-text-field label="ფუთი" type="number" v-model="starchPack"></v-text-field>
+                    <v-text-field label="თითოს ფასი" type="number" v-model="starchPrice"></v-text-field>
+                    <v-text-field label="შეფუთვების რაოდენობა" type="number" v-model="starchPack"></v-text-field>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -109,6 +113,7 @@
               >გაუქმება</v-btn>
               <v-btn
                 color="success"
+                @click="starchSubmit"
               >დამახსოვრება</v-btn>
             </v-card-actions>
           </v-card>
@@ -117,7 +122,7 @@
               <v-container grid-list-lg>
                 <v-layout row wrap >
                   <v-flex sm3 xs12>
-                    <v-text-field label="ფასი" type="number" v-model="wrapperPrice"></v-text-field>
+                    <v-text-field label="თითოს ფასი" type="number" v-model="wrapperPrice"></v-text-field>
                     <v-text-field label="რაოდენობა" type="number" v-model="wrapperQuantity"></v-text-field>
                   </v-flex>
                 </v-layout>
@@ -130,6 +135,7 @@
                 dark
               >გაუქმება</v-btn>
               <v-btn
+                @click="wrapSubmit"
                 color="success"
               >დამახსოვრება</v-btn>
             </v-card-actions>
@@ -219,6 +225,70 @@
             .then((res) => {
               this.loading = false
               this.$router.push({name: 'supplies'})
+            })
+            .catch((err) => {
+              console.log(err.data)
+            })
+        },
+        glueSubmit () {
+          this.loading = true
+          const newGlue = {
+            price: this.gluePrice,
+            weight: this.glueWeight
+          }
+          SupplyServices.addGlue(newGlue)
+            .then((res) => {
+              this.loading = false
+              this.$router.push({name: 'supplies'})
+            })
+            .catch((err) => {
+              console.log(err.data)
+            })
+        },
+        dyeSubmit () {
+          this.loading = true
+          const newDye = {
+            price: this.dyePrice,
+            color: this.dyeColor,
+            qty: this.dyeQuantity
+          }
+          SupplyServices.addDye(newDye)
+            .then((res) => {
+              this.loading = false
+              this.$router.push({name: 'supplies'})
+            })
+            .catch((err) => {
+              console.log(err.data)
+            })
+        },
+        starchSubmit () {
+          this.loading = true
+          const newStarch = {
+            price: this.starchPrice,
+            pack: this.starchPack
+          }
+          SupplyServices.addStarch(newStarch)
+            .then((res) => {
+              this.loading = false
+              this.$router.push({name: 'supplies'})
+            })
+            .catch((err) => {
+              console.log(err.data)
+            })
+        },
+        wrapSubmit () {
+          this.loading = true
+          const newWrap = {
+            price: this.wrapperPrice,
+            qty: this.wrapperQuantity
+          }
+          SupplyServices.addWrapper(newWrap)
+            .then((res) => {
+              this.loading = false
+              this.$router.push({name: 'supplies'})
+            })
+            .catch((err) => {
+              console.log(err.data)
             })
         }
       }
