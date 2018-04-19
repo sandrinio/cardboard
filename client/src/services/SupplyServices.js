@@ -17,10 +17,19 @@ export default {
   addDye (data) {
     return Api().post('/addDye', data)
   },
+  dyeGetter () {
+    return Api().get('/dyeGetter')
+  },
   addStarch (data) {
     return Api().post('/addStarch', data)
   },
+  starchGetter () {
+    return Api().get('/starchGetter')
+  },
   addWrapper (data) {
     return Api().post('/addWrappers', data)
-  }
+  },
+  wrapGetter () {
+    return Api().get('/wrapGetter')
+  },
 }

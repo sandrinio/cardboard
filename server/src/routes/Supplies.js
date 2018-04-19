@@ -48,6 +48,12 @@ router.post('/addDye', (req, res) => {
 				res.status(200).send({data: result})
 		})
 })
+router.get('/dyeGetter', (req, res) => {
+		DyeSupply.find({}, function (err, result) {
+				if(err) return res.send({error: err})
+				res.status(200).send({dyeList: result})
+		})
+})
 
 router.post('/addStarch', (req, res) => {
 		let data = req.body
@@ -57,12 +63,24 @@ router.post('/addStarch', (req, res) => {
 				res.status(200).send({data: result})
 		})
 })
+router.get('/starchGetter', (req, res) => {
+		StarchSupply.find({}, function (err, result) {
+				if(err) return res.send({error: err})
+				res.status(200).send({starchList: result})
+		})
+})
 router.post('/addWrappers', (req, res) => {
 		let data = req.body
 		data.regDate = dateFormat(now, 'd-mmmm-yyyy hh:mm:ss')
 		WrapperSupply.create(data, function (err, result) {
 				if(err) return res.send({error: err})
 				res.status(200).send({data: result})
+		})
+})
+router.get('/wrapGetter', (req, res) => {
+		WrapperSupply.find({}, function (err, result) {
+				if(err) return res.send({error: err})
+				res.status(200).send({wrapList: result})
 		})
 })
 

@@ -21,6 +21,9 @@
         <v-card-text>
           <paper-part-component></paper-part-component>
           <glue-part-component></glue-part-component>
+          <dye-part-component></dye-part-component>
+          <starch-part-component></starch-part-component>
+          <wrapper-part-component></wrapper-part-component>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -30,9 +33,18 @@
 <script>
 import PaperPartComponent from '@/components/supplies/PaperPart'
 import GluePartComponent from '@/components/supplies/GluePart'
+import DyePartComponent from '@/components/supplies/DyePart'
+import StarchPartComponent from '@/components/supplies/StarchPart'
+import WrapperPartComponent from '@/components/supplies/WrapperPart'
 
 export default {
-  components: {PaperPartComponent, GluePartComponent},
+  components: {
+    PaperPartComponent,
+    GluePartComponent,
+    DyePartComponent,
+    StarchPartComponent,
+    WrapperPartComponent
+  },
   data () {
       return {
 

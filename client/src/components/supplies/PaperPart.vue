@@ -5,7 +5,6 @@
       :headers="headers"
       :loading="paperLoading"
       :items="paperList"
-      hide-actions
       class="elevation-1"
     >
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
@@ -44,7 +43,7 @@ export default {
         { text: 'წონა', value: 'წონა', align: 'left'},
         { text: 'სიგანე', value: 'სიგანე', align: 'left'},
         { text: 'გრამაჟი', value: 'გრამაჟი', align: 'left'},
-        { text: 'მოქმედება', value: 'მოქმედება', sortable: false, align: 'left'}
+        { text: 'მოქმედება', value: 'მოქმედება', sortable: false, align: 'center'}
       ],
       paperList: [],
       paperLoading: true

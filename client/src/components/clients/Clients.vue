@@ -193,5 +193,4 @@ import ProductsComponent from '@/components/clients/ProductsComponent'
     font-weight: bold;
     cursor: pointer;
   }
-
 </style>
