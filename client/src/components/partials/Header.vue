@@ -10,10 +10,19 @@
 
           <v-list-tile @click="navigate('dashboard')">
             <v-list-tile-action>
-              <v-icon medium color="black darken-2">home</v-icon>
+              <v-icon medium color="brown darken-2">home</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title><strong>მთავარი</strong></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile @click="navigate('process')">
+            <v-list-tile-action>
+              <v-icon medium color="red darken-2">tune</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title><strong>დანადგარების შედეგი</strong></v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -37,7 +46,7 @@
 
           <v-list-tile @click="navigate('warehouse')">
             <v-list-tile-action>
-              <v-icon medium color="brown darken-2">branding_watermark</v-icon>
+              <v-icon medium color="lime darken-4">branding_watermark</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title><strong>საწყობი</strong></v-list-tile-title>
@@ -56,7 +65,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-toolbar color="indigo" dark fixed app :clipped-left="$vuetify.breakpoint.lgAndUp">
+      <v-toolbar color="brown darken-3" dark fixed app :clipped-left="$vuetify.breakpoint.lgAndUp">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title class="homeLink" @click="navigate('dashboard')">Cardboard</v-toolbar-title>
         <v-spacer></v-spacer>

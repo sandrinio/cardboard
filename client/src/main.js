@@ -9,7 +9,14 @@ import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 
 Vue.config.productionTip = false
-Vue.use(Vuetify)
+Vue.use(Vuetify,{
+  theme: {
+    primary: '#4E342E',
+    secondary: '#EFEBE9',
+    error: '#DD2C00',
+    success: '#1B5E20'
+  }
+})
 sync(store, router)
 
 /* eslint-disable no-new */

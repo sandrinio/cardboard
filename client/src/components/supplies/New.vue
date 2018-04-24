@@ -35,14 +35,10 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn
-                color="red"
-                dark
-              >გაუქმება</v-btn>
-              <v-btn
                 color="success"
                 :loading = loading
                 @click="paperSubmit"
-              >დამახსოვრება</v-btn>
+              ><strong>დამახსოვრება</strong></v-btn>
             </v-card-actions>
           </v-card>
           <v-card v-if="glueTab">
@@ -59,14 +55,10 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn
-                color="red"
-                dark
-              >გაუქმება</v-btn>
-              <v-btn
                 color="success"
                 @click="glueSubmit"
                 :loading="loading"
-              ><strong>დამახსოვრება</strong></v-btn>
+              ><strong><strong>დამახსოვრება</strong></strong></v-btn>
             </v-card-actions>
           </v-card>
           <v-card v-if="dyeTab">
@@ -84,14 +76,10 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn
-                color="red"
-                dark
-              >გაუქმება</v-btn>
-              <v-btn
                 color="success"
                 :loading="loading"
                 @click="dyeSubmit"
-              >დამახსოვრება</v-btn>
+              ><strong>დამახსოვრება</strong></v-btn>
             </v-card-actions>
           </v-card>
           <v-card v-if="starchTab">
@@ -108,13 +96,9 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn
-                color="red"
-                dark
-              >გაუქმება</v-btn>
-              <v-btn
                 color="success"
                 @click="starchSubmit"
-              >დამახსოვრება</v-btn>
+              ><strong>დამახსოვრება</strong></v-btn>
             </v-card-actions>
           </v-card>
           <v-card v-if="wrapperTab">
@@ -131,13 +115,9 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn
-                color="red"
-                dark
-              >გაუქმება</v-btn>
-              <v-btn
                 @click="wrapSubmit"
                 color="success"
-              >დამახსოვრება</v-btn>
+              ><strong>დამახსოვრება</strong></v-btn>
             </v-card-actions>
           </v-card>
 

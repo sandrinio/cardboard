@@ -2,8 +2,8 @@
     <v-layout align-center justify-center>
       <v-flex xs12 sm12 md10>
         <v-progress-linear v-if="indeterminate" :indeterminate="indeterminate"></v-progress-linear>
-        <v-card class="white elevation-2">
-          <v-toolbar flat dense class="blue darken-3" dark>
+        <v-card class="elevation-2">
+          <v-toolbar flat dense class="brown" dark>
             <v-toolbar-title>{{product.productName}}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon @click="navigateTo('/clients')">
@@ -11,7 +11,7 @@
             </v-btn>
           </v-toolbar>
           <v-spacer></v-spacer>
-          <v-card-text>
+          <v-card-text class="secondary">
             <v-form>
               <v-flex xs4>
                 <v-text-field
@@ -136,10 +136,10 @@
                 </v-flex>
               </v-layout>
               <v-spacer></v-spacer>
-              <v-card-actions>
-              <v-btn class="primary" dark @click="confirm">შეცვლა</v-btn>
+              <v-card-actions class="secondary">
+              <v-btn class="success" dark @click="confirm">შეცვლა</v-btn>
                 <v-spacer></v-spacer>
-                <v-btn class="red" dark @click="del">წაშლა</v-btn>
+                <v-btn class="error" dark @click="del">წაშლა</v-btn>
               </v-card-actions>
             </v-form>
           </v-card-text>

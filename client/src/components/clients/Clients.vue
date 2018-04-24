@@ -1,11 +1,11 @@
 <template>
-    <v-layout>
-      <v-flex xs12 sm8>
-          <v-card class="white elevation-2">
-            <v-toolbar flat dense class="blue darken-3" dark>
+    <v-layout row wrap>
+      <v-flex xs12 md8 sm6>
+          <v-card class="elevation-2">
+            <v-toolbar flat dense class="brown" dark>
               <v-toolbar-title>კომპანიები</v-toolbar-title>
             </v-toolbar>
-            <v-card-title>
+            <v-card-title class="brown lighten-5">
               <v-btn small class="primary" dark @click.stop="newCompanyDialog = true">ახალი კომპანია</v-btn>
               <v-spacer></v-spacer>
               <v-text-field
@@ -16,8 +16,9 @@
                 v-model="search"
               ></v-text-field>
             </v-card-title>
-            <v-card-text>
+            <v-card-text class="brown lighten-5">
               <v-data-table
+                class="elevation-3"
                 :loading="loading"
                 :headers="headers"
                 :items="items"
@@ -45,7 +46,7 @@
             </v-card-text>
           </v-card>
       </v-flex>
-      <v-flex xs12 sm4 v-if="companyProductListDialog === true" class="ml-2">
+      <v-flex xs12 md3 sm4 v-if="companyProductListDialog === true" class="ml-2">
         <products-component :temporary="temporary"></products-component>
       </v-flex>
       <v-dialog v-model="newCompanyDialog" max-width="500px">

@@ -25,5 +25,8 @@ export default {
   },
   delProduct (id) {
     return Api().post(`deleteProduct/${id}`)
+  },
+  productsGetter() {
+    return Api().get('productsGetter')
   }
 }

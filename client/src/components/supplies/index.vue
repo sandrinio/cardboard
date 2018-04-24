@@ -1,15 +1,15 @@
 <template>
   <v-layout align-center justify-center>
     <v-flex xs12 sm12 md10>
-      <v-card class="white elevation-2">
-        <v-toolbar flat dense class="blue darken-3" dark>
+      <v-card class="elevation-2">
+        <v-toolbar flat dense class="brown" dark>
           <v-toolbar-title>მარაგი</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn icon @click="navigateTo('/')">
             <v-icon>arrow_back</v-icon>
           </v-btn>
         </v-toolbar>
-        <v-card-title>
+        <v-card-title class="secondary">
           <v-btn small class="primary"
                  v-if="$store.state.user.permission === 'Admin'"
                  dark
@@ -18,7 +18,7 @@
           </v-btn>
           <v-spacer></v-spacer>
         </v-card-title>
-        <v-card-text>
+        <v-card-text class="secondary">
           <paper-part-component></paper-part-component>
           <glue-part-component></glue-part-component>
           <dye-part-component></dye-part-component>

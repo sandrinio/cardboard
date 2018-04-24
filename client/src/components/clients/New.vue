@@ -1,12 +1,12 @@
 <template>
   <v-layout align-center justify-center>
     <v-flex xs12 sm12 md10>
-      <v-card class="white elevation-2">
-        <v-toolbar flat dense class="blue darken-3" dark>
+      <v-card class="elevation-2">
+        <v-toolbar flat dense class="brown" dark>
           <v-toolbar-title>კომპანია: {{company}} - ახალი პროდუქტი</v-toolbar-title>
         </v-toolbar>
         <v-spacer></v-spacer>
-        <v-card-text>
+        <v-card-text class="secondary">
           <v-form>
               <v-flex xs4>
                 <v-text-field

@@ -3,14 +3,14 @@
   <v-flex xs12 sm12 md10>
     <v-progress-linear xs12 v-if="loading" :indeterminate="true"></v-progress-linear>
     <v-card>
-      <v-toolbar flat dense class="blue darken-3" dark>
-        <v-toolbar-title>შეკვეთა - </v-toolbar-title>
+      <v-toolbar flat dense class="brown" dark>
+        <v-toolbar-title>შეკვეთის მიმოხილვა</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon @click="navigateTo('/orders')">
           <v-icon>arrow_back</v-icon>
         </v-btn>
       </v-toolbar>
-      <v-card-text>
+      <v-card-text class="secondary">
         <v-btn
           class="fabBtn"
           color="warning"
@@ -23,7 +23,7 @@
         >
           <v-icon dark>edit</v-icon>
         </v-btn>
-        <table>
+        <table class="elevation-3">
           <tr>
             <td><strong>სტატუსი</strong></td>
             <td v-if="!editMode" :class="order.status">{{order.status}}</td>
@@ -99,14 +99,14 @@
           <td v-if="editMode"><input type="text" v-model="order.comment"></td>
           </tr>
         </table>
-        <v-card-actions v-if="editMode">
+        <v-card-actions v-if="editMode" class="secondary">
           <v-spacer></v-spacer>
           <v-btn
-            color="red"
+            color="error"
             dark
             @click="del"
             :loading="loading"
-          >გაუქმება</v-btn>
+          >წაშლა</v-btn>
           <v-btn
             :loading="loading"
             color="success"

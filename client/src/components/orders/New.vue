@@ -1,8 +1,8 @@
 <template>
   <v-layout align-center justify-center>
     <v-flex xs12 sm12 md10>
-      <v-card class="white elevation-2">
-        <v-toolbar flat dense class="blue darken-3" dark>
+      <v-card class="elevation-2">
+        <v-toolbar flat dense class="brown" dark>
           <v-toolbar-title>ახალი შეკვეთა</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn icon @click="navigateTo('/orders')">
@@ -11,7 +11,7 @@
         </v-toolbar>
         <v-progress-linear v-if="loading" :loading="loading"></v-progress-linear>
           <v-form>
-            <v-card-text>
+            <v-card-text class="secondary">
               <v-layout row wrap>
                 <v-flex xs6>
                   <v-subheader>აირჩიეთ კომპანია</v-subheader>
@@ -109,11 +109,11 @@
               </v-layout>
             </v-card-text>
             <v-spacer></v-spacer>
-            <v-card-actions>
+            <v-card-actions class="secondary">
               <v-btn
                 dark
                 :btnLoading="btnLoading"
-                class="primary"
+                class="success"
                 @click="newOrder">
                 Confirm
               </v-btn>
@@ -242,7 +242,7 @@ import OrderServices from '@/services/OrderServices'
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #327135;
+    background-color: #795548;
     color: white;
   }
 </style>

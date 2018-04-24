@@ -41,6 +41,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+body {
+  background-color: #ad8300;
+}
+.content {
+  background-color: #f2eee0;
+}
 .danger-alert {
   color: darkred;
 }

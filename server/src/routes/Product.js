@@ -41,6 +41,14 @@ router.post('/newCompany', (req, res) => {
 router.post('/deleteCompany', (req, res) => {
 		Company.findByIdAndRemove(req.body.id, function (err, result) {
 				if(err) return res.send({error: err})
+				if(result.products.length >= 0){
+						result.products.forEach(function (id) {
+								Product.findByIdAndRemove(id, function (err, deletedProduct) {
+										if(err) return console.log(err)
+										console.log(`Deleted ${deletedProduct}`)
+								})
+						})
+				}
 				res.send({data: result, msg: `Company ${result.company} Has been removed`})
 		})
 })
@@ -63,7 +71,6 @@ router.post('/deleteProduct/:id', (req, res)=>{
 router.post('/:id/new-product', (req, res) => {
 		Company.findById(req.body.id, function (err, company) {
 				if(err) return console.log(err)
-				console.log(req.body)
 				Product.create(req.body, function (err, product) {
 						if(err) return console.log(err)
 						company.products.push(product)
@@ -71,7 +78,13 @@ router.post('/:id/new-product', (req, res) => {
 						res.status(200).send({msg: 'Saved'})
 				})
 		})
+})
 
+router.get('/productsGetter', (req, res) => {
+		Product.find({}, function (err, result) {
+				if(err) return console.log(err)
+				res.status(200).send({products: result})
+		})
 })
 
 module.exports = router
