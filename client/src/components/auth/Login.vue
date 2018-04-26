@@ -2,11 +2,11 @@
   <v-layout align-center justify-center>
     <v-flex xs12 sm8 md4>
   <v-card class="elevation-12">
-    <v-toolbar flat dense class="blue darken-3" dark>
+    <v-toolbar flat dense class="brown" dark>
       <v-toolbar-title>Login</v-toolbar-title>
     </v-toolbar>
     <v-spacer></v-spacer>
-    <v-card-text>
+    <v-card-text class="secondary">
       <v-form>
           <v-text-field
             prepend-icon="person"

@@ -7,25 +7,32 @@
           <v-select
             :items="products"
             item-text="productName"
-            editable
+            multiple
+            chips
+            persistent-hint
             label="პროდუქტის სახელი"
             v-model="pickedProduct"
             :loading="loading"
           ></v-select>
-            <table v-if="productPreview !== ''">
-              <tr>
-                <th>ყუთის ზომა:</th>
-                <td>{{productPreview.boxHeight}}x{{productPreview.boxWidth}}x{{productPreview.boxThickness}}</td>
-              </tr>
-              <tr>
-                <th>{{productPreview.layerQuantity}} შრე:</th>
-                <td><span v-for="layer in productPreview.layers">-{{layer}}   -</span></td>
-              </tr>
-              <tr>
-                <th>პროფილი:</th>
-                <td>{{productPreview.profile}}</td>
-              </tr>
-            </table>
+          <v-layout>
+              <v-flex xs4 v-if="productPreview.length > 0" v-for="prod in productPreview" :key='productPreview._id'>
+                <table>
+                  <tr>
+                    <th>ყუთის ზომა:</th>
+
+                    <td>{{prod.boxHeight}}x{{prod.boxWidth}}x{{prod.boxThickness}}</td>
+                  </tr>
+                  <tr>
+                    <th>{{prod.layerQuantity}} შრე:</th>
+                    <td><span v-for="layer in prod.layers" :key="layer">-{{layer}}   -</span></td>
+                  </tr>
+                  <tr>
+                    <th>პროფილი:</th>
+                    <td>{{prod.profile}}</td>
+                  </tr>
+                </table>
+              </v-flex>
+          </v-layout>
           <v-text-field
             label="გამოშვებული ქაღალდის რაოდენობა"
           ></v-text-field>
@@ -55,7 +62,7 @@
             <v-date-picker v-model="date" @input="$refs.processDate.save(date)"></v-date-picker>
 
           </v-menu>
-          <v-card-actions class="secondary">
+          <v-card-actions class="tab-text-color">
             <v-spacer></v-spacer>
             <v-btn
               color="success"
@@ -79,7 +86,7 @@ import CompanyServices from '@/services/CompanyServices'
           products: [],
           loading: true,
           pickedProduct: '',
-          productPreview: '',
+          productPreview: [],
           date: '',
           processDate: '',
           waste: ''
@@ -87,14 +94,14 @@ import CompanyServices from '@/services/CompanyServices'
       },
       watch: {
         pickedProduct: function (e) {
-          this.productPreview = e
+          this.productPreview.push(e[0])
+          console.log(this.productPreview)
         }
       },
       mounted () {
         CompanyServices.productsGetter()
           .then((res) => {
             this.products = res.data.products
-            console.log(this.products)
             this.loading = false
           })
           .catch((err)=> {

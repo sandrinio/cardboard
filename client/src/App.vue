@@ -42,7 +42,7 @@ export default {
   margin-top: 60px;
 }
 body {
-  background-color: #ad8300;
+  background-color: rgb(77, 52, 47);
 }
 .content {
   background-color: #f2eee0;

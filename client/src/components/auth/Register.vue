@@ -2,7 +2,7 @@
   <v-layout align-center justify-center>
     <v-flex xs12 sm12 md10>
       <v-card class="white elevation-2">
-        <v-toolbar flat dense class="blue darken-3" dark>
+        <v-toolbar flat dense class="brown" dark>
           <v-toolbar-title>Register</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn icon @click="navigateBack('dashboard')">
@@ -53,14 +53,17 @@
             <br>
             <div class="danger-alert" v-html="error" />
             <br>
-            <v-btn
-              dark
-              :loading="loading"
-              class="blue darken-3"
-              :keyup.13="register"
-              @click="register">
-              Register
-            </v-btn>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                dark
+                :loading="loading"
+                class="primary"
+                :keyup.13="register"
+                @click="register">
+                Register
+              </v-btn>
+            </v-card-actions>
           </div>
         </v-card-text>
       </v-card>
